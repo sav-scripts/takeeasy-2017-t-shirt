@@ -1,0 +1,144 @@
+@import "common-mixins.less";
+
+@background-color: #faefd8;
+@main-width: 640px;
+@main-height: 1080px;
+
+
+html {
+    padding: 0;
+    margin: 0;
+}
+body{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y:auto;
+    background: @background-color;
+    padding: 0;
+    margin: 0;
+}
+.template-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+#invisible-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+
+.bound{
+    position: absolute;
+    border: 1px solid red;
+    margin-left: -1px;
+    margin-top: -1px;
+
+    z-index: 1000;
+    pointer-events: none;
+
+    .text{
+        position: absolute;
+        top:4px;
+        width: 200px;
+        height:20px;
+        left:50%;
+        margin-left: -100px;
+        color:red;
+        text-align: center;
+    }
+}
+
+/* common */
+#main-background{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    .image-bg("main-background.jpg");
+    background-size: cover;
+    background-position: center top;
+
+    .layout{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        .image-bg('layouts/index.jpg');
+
+        background-position: center top;
+
+        opacity: .3;
+    }
+
+    .statement{
+        position: absolute;
+        bottom: 16px;
+        right: 27px;
+        .image-bg('statement.png');
+        width: 385px;
+        height: 36px;
+    }
+
+    .abs-div-2(logo, 22, 11, 137, 41, 'logo.png');
+}
+
+#scene-container{
+    position: relative;
+    width: @main-width;
+    height: auto;
+    min-height: @main-height;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    overflow: hidden;
+}
+/* index */
+#index {
+
+    position: absolute;
+
+    .abs-div-2(title, 34, 54, 573, 301, 'index-title.png');
+
+    .abs-div-2(detail, 74, 827, 492, 184, 'index-detail.png');
+
+    .options{
+        .abs-div-2(none, 34, 678, 570, 153, 'index-options.png');
+    }
+
+    .works{
+        position: absolute;
+
+        left:@main-width * .5;
+        top: 509px;
+
+        .user-work{
+            @w: 417px;
+            @h: 483px;
+            .abs-div-2(none, -@w*.5, -@h*.5, @w, @h,'index-t-shirt-demo.png');
+        }
+
+
+        .abs-div-2(arrow-prev, -292, -40, 54, 99, 'index-arrow-left.png');
+        .abs-div-2(arrow-next, 242, -40, 54, 99, 'index-arrow-right.png');
+
+        .arrow-prev, .arrow-next{
+            cursor: pointer;
+        }
+
+        .arrow-prev:active{
+            margin-left: -1px;
+        }
+
+        .arrow-next:active{
+            margin-left: 1px;
+        }
+
+
+    }
+
+}

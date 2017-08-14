@@ -1,0 +1,177 @@
+/** common mixins **/
+html {
+  padding: 0;
+  margin: 0;
+}
+body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #faefd8;
+  padding: 0;
+  margin: 0;
+}
+.template-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#invisible-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+.bound {
+  position: absolute;
+  border: 1px solid red;
+  margin-left: -1px;
+  margin-top: -1px;
+  z-index: 1000;
+  pointer-events: none;
+}
+.bound .text {
+  position: absolute;
+  top: 4px;
+  width: 200px;
+  height: 20px;
+  left: 50%;
+  margin-left: -100px;
+  color: red;
+  text-align: center;
+}
+/* common */
+#main-background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/main-background.jpg");
+  background-size: auto;
+  background-size: cover;
+  background-position: center top;
+}
+#main-background .layout {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/layouts/index.jpg");
+  background-size: auto;
+  background-position: center top;
+  opacity: .3;
+}
+#main-background .statement {
+  position: absolute;
+  bottom: 16px;
+  right: 27px;
+  background-image: url("../images/statement.png");
+  background-size: auto;
+  width: 385px;
+  height: 36px;
+}
+#main-background .logo {
+  position: absolute;
+  left: 22px;
+  top: 11px;
+  width: 137px;
+  height: 41px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/logo.png");
+  background-size: auto;
+}
+#scene-container {
+  position: relative;
+  width: 640px;
+  height: auto;
+  min-height: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+/* index */
+#index {
+  position: absolute;
+}
+#index .title {
+  position: absolute;
+  left: 34px;
+  top: 54px;
+  width: 573px;
+  height: 301px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/index-title.png");
+  background-size: auto;
+}
+#index .detail {
+  position: absolute;
+  left: 74px;
+  top: 827px;
+  width: 492px;
+  height: 184px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/index-detail.png");
+  background-size: auto;
+}
+#index .options {
+  position: absolute;
+  left: 34px;
+  top: 678px;
+  width: 570px;
+  height: 153px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/index-options.png");
+  background-size: auto;
+}
+#index .works {
+  position: absolute;
+  left: 320px;
+  top: 509px;
+}
+#index .works .user-work {
+  position: absolute;
+  left: -208.5px;
+  top: -241.5px;
+  width: 417px;
+  height: 483px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/index-t-shirt-demo.png");
+  background-size: auto;
+}
+#index .works .arrow-prev {
+  position: absolute;
+  left: -292px;
+  top: -40px;
+  width: 54px;
+  height: 99px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/index-arrow-left.png");
+  background-size: auto;
+}
+#index .works .arrow-next {
+  position: absolute;
+  left: 242px;
+  top: -40px;
+  width: 54px;
+  height: 99px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/index-arrow-right.png");
+  background-size: auto;
+}
+#index .works .arrow-prev,
+#index .works .arrow-next {
+  cursor: pointer;
+}
+#index .works .arrow-prev:active {
+  margin-left: -1px;
+}
+#index .works .arrow-next:active {
+  margin-left: 1px;
+}
