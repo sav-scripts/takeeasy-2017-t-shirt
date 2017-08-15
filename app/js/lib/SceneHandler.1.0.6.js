@@ -1,5 +1,11 @@
 /**
  * Created by sav on 2015/10/20.
+ *
+ * updates:
+ * version 1.0.6 =>
+ *     added cbBeforeStageIn, which will be called before content stageIn
+ *
+ *
  */
 (function(){
 
@@ -17,6 +23,7 @@
         _cbBeforeChange,
         _cbAfterChange,
         _cbContentChange,
+        _cbBeforeStageIn,
         _hashChangeTester,
         _isLocking = false,
         _ignoreNextHashChange,
@@ -54,6 +61,7 @@
         _hashChangeTester = opts.hashChangeTester;
         _cbContentChange = opts.cbContentChange;
         _cbContentLoaded = opts.cbContentLoaded;
+        _cbBeforeStageIn = opts.cbBeforeStageIn;
         _Loading = opts.loadingClass;
         _defaultHash = opts.defaultHash || "/Index";
 
@@ -313,6 +321,7 @@
 
             if(!_p.currentScene._isPopup) _lastNonPopupHash = _currentHash;
 
+            if(_cbBeforeStageIn) _cbBeforeStageIn.call(null, _currentHash, _lastHash);
             targetObj.stageClass.stageIn(options, toContentComplete);
 
         }
@@ -364,6 +373,8 @@
 
                         _hashDic[oldNonPopupHash].stageClass.stageOut(options, function()
                         {
+                            if(_cbBeforeStageIn) _cbBeforeStageIn.call(null, _currentHash, _lastHash);
+
                             targetObj.stageClass.stageIn(options, toContentComplete);
                         });
 
@@ -393,6 +404,7 @@
                 }
                 else
                 {
+                    if(_cbBeforeStageIn) _cbBeforeStageIn.call(null, _currentHash, _lastHash);
                     currentObj.stageClass.stageOut(options, function()
                     {
                         targetObj.stageClass.stageIn(options, toContentComplete);

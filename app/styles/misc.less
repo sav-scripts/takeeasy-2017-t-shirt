@@ -1,0 +1,108 @@
+/* .custom-checkbox */
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    position: relative;
+//    margin: 20px auto;
+    background: white;
+    border: 1px solid #000000;
+
+    label{
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        &:after{
+
+            content: '';
+            width: 9px;
+            height: 5px;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            border: 3px solid #000000;
+            border-top: none;
+            border-right: none;
+            background: transparent;
+            opacity: 0;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+        &:hover::after{
+            opacity: 0;
+        }
+    }
+
+    input[type=checkbox] {
+        visibility: hidden;
+    }
+
+    input[type=checkbox]:checked + label:after {
+        opacity: 1;
+    }
+
+    &.no-style{
+
+        label{
+            display: none;
+        }
+
+        background: none;
+        border: none;
+
+        input[type=checkbox]{
+            visibility: visible;
+            position: absolute;
+            left:1px;
+            top:1px;
+        }
+    }
+
+    @media (max-width: 640px)
+    {
+        &.big{
+            width: 41px;
+            height: 41px;
+
+            label{
+                width: 39px;
+                height: 39px;
+
+                &:after{
+                    width:23px;
+                    height: 13px;
+                    left:7px;
+                    top: 7px;
+                    border: 6px solid #000000;
+                    border-top: none;
+                    border-right: none;
+                }
+            }
+        }
+
+        &.middle{
+            width: 29px;
+            height: 29px;
+
+            label{
+                width: 27px;
+                height: 27px;
+
+                &:after{
+                    width:13px;
+                    height: 7px;
+                    left:7px;
+                    top: 7px;
+                    border: 4px solid #000000;
+                    border-top: none;
+                    border-right: none;
+                }
+            }
+
+        }
+    }
+}

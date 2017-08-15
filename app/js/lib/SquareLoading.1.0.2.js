@@ -186,7 +186,7 @@
         s.height = opt.fontSize;
         s.fontSize = opt.fontSize;
         s.marginLeft = "-151px";
-        s.marginTop = "-7px";
+        s.marginTop = "-6px";
         s.textAlign = "center";
         s.color = opt.fontColor;
         s.fontWeight = opt.fontWeight;
@@ -276,7 +276,7 @@
     function drawSegment(start, end)
     {
         drawSegment_e(start, end, _size);
-        drawSegment_e(start, end, _size+_tickness*4, -1);
+        //drawSegment_e(start, end, _size+_tickness*4, -1);
     }
 
     function drawSegment_e(start, end, size, direction)

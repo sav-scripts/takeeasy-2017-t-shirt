@@ -13,7 +13,7 @@ var send =
 var response =
 {
     "error": "some error",  // 正常執行的話傳回空值, 有錯傳回錯誤訊息
-    "entries": [  // 參賽作品圖片
+    "examples": [  // 參賽作品圖片
         "http://xxx.xx/xxx.png",
         "http://xxx.xx/xxx.png",
         "http://xxx.xx/xxx.png",

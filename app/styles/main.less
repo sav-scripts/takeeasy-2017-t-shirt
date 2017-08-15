@@ -1,4 +1,5 @@
 @import "common-mixins.less";
+@import "misc.less";
 
 @background-color: #faefd8;
 @main-width: 640px;
@@ -67,7 +68,7 @@ body{
         width: 100%;
         height: 100%;
 
-        .image-bg('layouts/index.jpg');
+//        .image-bg('layouts/participate.jpg');
 
         background-position: center top;
 
@@ -96,7 +97,121 @@ body{
     margin-right: auto;
 
     overflow: hidden;
+
+    &.fix-size-mode{
+
+
+        @media (min-height: 1080px) {
+            position: absolute;
+            left: 50%;
+            top:50%;
+            margin-left: -@main-width * .5;
+            margin-top: -@main-height * .5;
+        }
+
+    }
 }
+
+/* menu */
+#menu{
+    position: fixed;
+
+    left: 50%;
+    top:0;
+    width: @main-width;
+    margin-left: -@main-width * .5;
+
+
+
+    .menu-icon{
+        position: absolute;
+        right: 13px;
+        top:6px;
+        width: 60px;
+        height: 60px;
+        .image-bg("menu-icon.png");
+        cursor: pointer;
+    }
+
+    .menu-base{
+
+        visibility: hidden;
+        top: -500px;
+
+        @duration : .3s;
+
+        transition: top @duration ease-in, visibility .0s linear @duration;
+
+        &.open-mode{
+            visibility: visible;
+            top: 0;
+
+            transition: top @duration ease-out, visibility .0s linear .0s;
+        }
+
+        position: absolute;
+        right: 0;
+        padding: 5px;
+        background-color: rgba(42, 32, 11, .9);
+
+        .menu-container{
+            position: relative;
+            right: 0;
+            top:0;
+
+            @border-color: #fcd903;
+
+//            width: 100px;
+//            height: 100px;
+            border: 1px solid @border-color;
+
+            .my-mixin (@index) when (@index <= 7)
+            {
+                @i: 1 + ((@index - 1) * 2);
+
+                .button:nth-child(@{i}){
+                    position: relative;
+//                    float: left;
+                    width: 294px;
+                    height: 70px;
+
+                    .image-bg('menu-texts.png');
+
+
+                    background-position: 0 -((@index - 1) * 70px);
+
+//                    background-color: rgba(255, 255, 0, .3);
+
+                    margin-top: -1px;
+
+                    &:hover{
+                        background-position: -294px -((@index - 1) * 70px);
+                        background-color: @border-color;
+                    }
+
+                    cursor: pointer;
+                }
+
+                .my-mixin(@index + 1);
+            }
+
+            .my-mixin(1);
+
+
+            .line{
+                position: relative;
+                width: 280px;
+                height: 1px;
+                margin-left: 7px;
+                margin-top: -1px;
+
+                background-color: @border-color;
+
+            }
+        }
+    }
+}
+
 /* index */
 #index {
 
@@ -108,18 +223,33 @@ body{
 
     .options{
         .abs-div-2(none, 34, 678, 570, 153, 'index-options.png');
+
+        .abs-div-2(btn-participate, 0, 47, 230, 70);
+        .abs-div-2(btn-to-entries, 340, 47, 230, 70);
+
+        .btn-participate, .btn-to-entries{
+//            background-color: rgba(255, 0, 0, .3);
+            cursor: pointer;
+        }
     }
 
-    .works{
+    .examples{
         position: absolute;
 
         left:@main-width * .5;
         top: 509px;
 
-        .user-work{
+        .user-example{
             @w: 417px;
             @h: 483px;
-            .abs-div-2(none, -@w*.5, -@h*.5, @w, @h,'index-t-shirt-demo.png');
+//            .abs-div-2(none, -@w*.5, -@h*.5, @w, @h,'index-t-shirt-demo.png');
+            .abs-div-2(none, -@w*.5, -@h*.5, @w, @h);
+
+            img{
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
         }
 
 
@@ -139,6 +269,64 @@ body{
         }
 
 
+    }
+
+}
+
+/* participate */
+#participate{
+    position: absolute;
+
+    .abs-div-2(title, 102, 67, 438, 80, 'participate-title.png');
+    .abs-div-2(contents, 55, 157, 536, 791, 'participate-contents.png');
+
+    .abs-div-2(btn-upload, 247, 749, 150, 45, 'participate-btn-upload.png');
+    .abs-div-2(btn-send, 247, 964, 150, 45, 'participate-btn-continue.png');
+
+    .btn-upload, .btn-send{
+        cursor: pointer;
+        &:active{
+            margin-top: 1px;
+        }
+
+        &.disactivated{
+            opacity: .5;
+        }
+    }
+
+    .checkbox{
+        position: absolute;
+        left: 52px;
+        top: 807px;
+    }
+
+    .preview{
+        position: absolute;
+        width: 238px * 2;
+        height: 238px;
+        left: 82px;
+        top: 360px;
+        border: 1px solid black;
+        background-color: white;
+    }
+
+    .description{
+        position: absolute;
+        width: 238px * 2 - 10px;
+        height: 94px - 10px;
+        resize: none;
+
+        left: 81px;
+        top: 640px;
+
+        padding: 5px;
+
+        border: 1px solid black;
+        background-color: white;
+    }
+
+    .image-input{
+        visibility: hidden;
     }
 
 }
