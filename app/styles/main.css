@@ -187,6 +187,15 @@ body {
   }
 }
 /* menu */
+#menu-cover {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+#menu-cover.active-mode {
+  display: block;
+}
 #menu {
   position: fixed;
   left: 50%;
@@ -507,19 +516,19 @@ body {
 }
 #participate .preview {
   position: absolute;
-  width: 476px;
-  height: 238px;
-  left: 82px;
+  width: 456px;
+  height: 228px;
+  left: 92px;
   top: 360px;
   border: 1px solid black;
   background-color: white;
 }
 #participate .description {
   position: absolute;
-  width: 466px;
+  width: 526px;
   height: 84px;
   resize: none;
-  left: 81px;
+  left: 51px;
   top: 640px;
   padding: 5px;
   border: 1px solid black;
@@ -527,4 +536,169 @@ body {
 }
 #participate .image-input {
   visibility: hidden;
+}
+#dialog-is-ready {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+#dialog-is-ready .container {
+  position: absolute;
+  width: 474px;
+  height: 261px;
+  left: 50%;
+  top: 50%;
+  margin-left: -236px;
+  margin-top: -130.5px;
+  background-image: url("../images/participate-alert-base.png");
+  background-size: auto;
+}
+#dialog-is-ready .container .btn-yes {
+  position: absolute;
+  left: 14px;
+  top: 146px;
+  width: 214px;
+  height: 100px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/participate-alert-btn-yes.png");
+  background-size: auto;
+}
+#dialog-is-ready .container .btn-no {
+  position: absolute;
+  left: 247px;
+  top: 146px;
+  width: 214px;
+  height: 100px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/participate-alert-btn-no.png");
+  background-size: auto;
+}
+#dialog-is-ready .container .btn-yes,
+#dialog-is-ready .container .btn-no {
+  cursor: pointer;
+}
+#dialog-is-ready .container .btn-yes:active,
+#dialog-is-ready .container .btn-no:active {
+  margin-top: 1px;
+}
+#dialog-is-ready .container .btn-close {
+  position: absolute;
+  left: 423px;
+  top: 0px;
+  width: 50px;
+  height: 50px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/common-btn-close.png");
+  background-size: auto;
+  cursor: pointer;
+}
+/* participate form */
+#participate-form {
+  position: absolute;
+}
+#participate-form .title {
+  position: absolute;
+  left: 102px;
+  top: 66px;
+  width: 430px;
+  height: 80px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/participate-form-title.png");
+  background-size: auto;
+}
+#participate-form .texts {
+  position: absolute;
+  left: 55px;
+  top: 175px;
+  width: 433px;
+  height: 752px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/participate-form-texts.png");
+  background-size: auto;
+}
+#participate-form .btn-send {
+  position: absolute;
+  left: 247px;
+  top: 953px;
+  width: 150px;
+  height: 45px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/participate-form-btn-send.png");
+  background-size: auto;
+  cursor: pointer;
+}
+#participate-form .btn-send:active {
+  margin-top: 1px;
+}
+#participate-form .checkbox {
+  position: absolute;
+  left: 53px;
+  top: 905px;
+}
+#participate-form .rule-container {
+  position: absolute;
+  left: 51px;
+  top: 367px;
+  width: 536px;
+  height: 515px;
+  background-color: white;
+  border: 1px solid black;
+  overflow-y: auto;
+}
+#participate-form .rule-container .rule-texts {
+  position: relative;
+  width: 500px;
+  height: 611px;
+  margin-left: 5px;
+  margin-top: 1px;
+  background-image: url("../images/participate-form-rules.png");
+  background-size: auto;
+}
+#participate-form .fields {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#participate-form .fields input {
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid black;
+  height: 23px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 14px;
+  color: #000;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#participate-form .fields .field-school-name {
+  left: 101px;
+  top: 211px;
+  width: 467px;
+}
+#participate-form .fields .field-class-name {
+  left: 154px;
+  top: 247px;
+  width: 138px;
+}
+#participate-form .fields .field-user-name {
+  left: 445px;
+  top: 247px;
+  width: 123px;
+}
+#participate-form .fields .field-phone {
+  left: 137px;
+  top: 283px;
+  width: 431px;
+}
+#participate-form .fields .field-email {
+  left: 153px;
+  top: 319px;
+  width: 415px;
 }

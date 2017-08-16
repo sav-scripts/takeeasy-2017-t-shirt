@@ -9,9 +9,9 @@
         _isRuleConfirmed = false,
         _imageSetting =
         {
-            raw: {w:7087, h:3543},
-            preview: {w:476, h:238},
-            thumb: {w:476, h:238}
+            raw: {w:7086, h:3543},
+            preview: {w:456, h:228},
+            thumb: {w:456, h:228}
         };
 
     var self = window.Participate =
@@ -124,9 +124,11 @@
         setupDescription();
         setupImageInput();
 
+        self.DialogIsReady.init($("#dialog-is-ready"));
+
         $doms.btnSend = $doms.container.find(".btn-send").on(_CLICK_, function()
         {
-            /*
+
             if(!_isImageReady)
             {
                 alert("請先選擇欲上傳的圖片");
@@ -141,11 +143,11 @@
             }
             else
             {
-                //Participate.toStep("form");
+                SceneHandler.toHash("/ParticipateForm");
             }
-            */
 
-            self.reset();
+
+            //self.reset();
         });
 
         $doms.ruleCheckbox = $doms.container.find("#upload-checkbox").on("change", function()
@@ -296,12 +298,15 @@
         tl.to($doms.container, .4, {autoAlpha: 1});
         tl.add(function ()
         {
+            self.DialogIsReady.show();
             cb.apply();
         });
     }
 
     function hide(cb)
     {
+        self.DialogIsReady.hide();
+
         var tl = new TimelineMax;
         tl.to($doms.container, .4, {autoAlpha: 0});
         tl.add(function ()
@@ -310,5 +315,75 @@
             cb.apply();
         });
     }
+
+}());
+
+(function(){
+
+    var $container,
+        $content,
+        _tl,
+        _isHiding = true;
+
+    var self = window.Participate.DialogIsReady =
+    {
+        init: function($dom)
+        {
+            $container = $dom;
+
+            $container.find(".btn-close").on(_CLICK_, function()
+            {
+                self.hide();
+            });
+
+            $container.find(".btn-yes").on(_CLICK_, function()
+            {
+                self.hide();
+            });
+
+            $container.find(".btn-no").on(_CLICK_, function()
+            {
+                self.hide();
+            });
+
+            $content = $container.find(".container");
+
+
+            $container.detach();
+        },
+
+        show: function()
+        {
+            if(!_isHiding) return;
+            _isHiding = false;
+
+            if(_tl) _tl.kill();
+
+            var tl = _tl = new TimelineMax;
+            tl.set($container, {autoAlpha:0});
+            tl.set($content, {autoAlpha:0, y: 50});
+            tl.to($container,.3, {autoAlpha:1});
+            tl.to($content,.3,{autoAlpha:1, y: 0});
+
+            $('body').append($container);
+        },
+
+        hide: function()
+        {
+            if(_isHiding) return;
+            _isHiding = true;
+
+            if(_tl) _tl.kill();
+
+            var tl = _tl = new TimelineMax;
+            tl.to($content,.3,{autoAlpha:0, y: -50});
+            tl.to($container,.3,{autoAlpha:0});
+            tl.add(function()
+            {
+                $container.detach();
+            });
+
+        }
+    };
 
 }());

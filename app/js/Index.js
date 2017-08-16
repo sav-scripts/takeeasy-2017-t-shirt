@@ -52,7 +52,8 @@
 
         $doms.container.find(".btn-participate").on(_CLICK_, function()
         {
-            SceneHandler.toHash("/Participate");
+            //SceneHandler.toHash("/Participate");
+            Main.loginFB('/Participate');
         });
 
         $doms.container.find(".btn-to-entries").on(_CLICK_, function()

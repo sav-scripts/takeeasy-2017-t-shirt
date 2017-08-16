@@ -5,7 +5,7 @@
     {
         localSettings:
         {
-            fb_appid: "1896326817270897"
+            fb_appid: "141103743143422"
         },
 
         settings:
@@ -15,7 +15,7 @@
 
             useFakeData: false,
 
-            fb_appid: "",
+            fb_appid: "1876517482676293",
             fbPermissions: [],
 
             fbToken: null,
@@ -40,6 +40,7 @@
         [
             "/Index",
             "/Participate",
+            "/ParticipateForm",
             //"/Entries",
             //"/Reviewer",
             //"/Rule",
@@ -67,10 +68,16 @@
 
             Menu.init();
 
-            $(window).on("resize", onResize);
-            onResize();
+
+            FBHelper.init(Main.settings.fb_appid,
+            {
+                useRedirectLogin: (Main.settings.isiOS || Main.settings.isLineBrowser)
+            });
 
             startApp();
+
+            $(window).on("resize", onResize);
+            onResize();
 
             function startApp()
             {
@@ -90,11 +97,62 @@
                     {
                         var useFixSize = newHash != '/Entries';
                         $("#scene-container").toggleClass("fix-size-mode", useFixSize);
+                    },
+
+                    hashChangeTester: function(hashName)
+                    {
+
+                        //if(hashName == "/Publish")
+                        //{
+                        //    if(Main.settings.isEnd)
+                        //    {
+                        //        alert(Main.settings.endMessage);
+                        //
+                        //        return Main.defaultHash;
+                        //    }
+                        //
+                        //    if(!FBHelper._token && !Main.testmode)
+                        //    {
+                        //        SceneHandler.toHash(self.defaultHash);
+                        //        return null;
+                        //    }
+                        //    else if(!Modernizr.canvas)
+                        //    {
+                        //        alert('您的瀏覽器不支援使用canvas, 請使用較新的瀏覽器');
+                        //        SceneHandler.toHash(self.defaultHash);
+                        //        return null;
+                        //    }
+                        //}
+
+                        return hashName;
                     }
                 });
 
                 SceneHandler.toFirstHash();
             }
+        },
+
+        loginFB: function(nextHash, redirectUri)
+        {
+            Loading.progress("登入 facebook 中").show();
+
+            FBHelper.loginFB(nextHash, redirectUri, function(error)
+            {
+                Loading.hide();
+
+                if(error && error == 'unauthorized')
+                {
+                    alert('您必須登入 facebook 才能參加活動喔');
+                }
+                else if(error)
+                {
+                    alert(error);
+                }
+                else
+                {
+                    SceneHandler.toHash(nextHash);
+                }
+            });
         }
     };
 

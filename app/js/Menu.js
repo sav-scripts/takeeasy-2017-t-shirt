@@ -16,6 +16,11 @@
                 self.open();
             });
 
+            $doms.menuCover = $('#menu-cover').on(_CLICK_, function()
+            {
+                self.close();
+            });
+
             $doms.btnIndex = $doms.menuContainer.find(".button:nth-child(1)").on(_CLICK_, function()
             {
                 SceneHandler.toHash("/Index");
@@ -79,6 +84,8 @@
         update: function()
         {
             $doms.menuContainer.toggleClass("open-mode", _isOpen);
+
+            $doms.menuCover.toggleClass("active-mode", _isOpen);
         }
 
     };
