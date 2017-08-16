@@ -162,8 +162,10 @@
 
     function update()
     {
+        var desc = self.getDescriptionInput();
+
         _isImageReady = self.getImage()? true: false;
-        _isDescriptionReady = (self.getDescriptionInput().length >= 20);
+        _isDescriptionReady = (desc != _defaultDescription && desc.length >= 20);
         _isRuleConfirmed = $doms.ruleCheckbox[0].checked;
 
         var activeBtnSend = (_isImageReady && _isDescriptionReady && _isRuleConfirmed);
@@ -315,75 +317,5 @@
             cb.apply();
         });
     }
-
-}());
-
-(function(){
-
-    var $container,
-        $content,
-        _tl,
-        _isHiding = true;
-
-    var self = window.Participate.DialogIsReady =
-    {
-        init: function($dom)
-        {
-            $container = $dom;
-
-            $container.find(".btn-close").on(_CLICK_, function()
-            {
-                self.hide();
-            });
-
-            $container.find(".btn-yes").on(_CLICK_, function()
-            {
-                self.hide();
-            });
-
-            $container.find(".btn-no").on(_CLICK_, function()
-            {
-                self.hide();
-            });
-
-            $content = $container.find(".container");
-
-
-            $container.detach();
-        },
-
-        show: function()
-        {
-            if(!_isHiding) return;
-            _isHiding = false;
-
-            if(_tl) _tl.kill();
-
-            var tl = _tl = new TimelineMax;
-            tl.set($container, {autoAlpha:0});
-            tl.set($content, {autoAlpha:0, y: 50});
-            tl.to($container,.3, {autoAlpha:1});
-            tl.to($content,.3,{autoAlpha:1, y: 0});
-
-            $('body').append($container);
-        },
-
-        hide: function()
-        {
-            if(_isHiding) return;
-            _isHiding = true;
-
-            if(_tl) _tl.kill();
-
-            var tl = _tl = new TimelineMax;
-            tl.to($content,.3,{autoAlpha:0, y: -50});
-            tl.to($container,.3,{autoAlpha:0});
-            tl.add(function()
-            {
-                $container.detach();
-            });
-
-        }
-    };
 
 }());

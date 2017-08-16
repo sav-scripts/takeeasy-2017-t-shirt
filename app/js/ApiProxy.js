@@ -8,7 +8,7 @@
         "participate":
         {
             error: '',
-            serial: '00001'
+            serial: '00002'
         },
 
         "entries_vote":
@@ -24,7 +24,7 @@
                 {
                     "serial": "0088",
                     "status": "approved",
-                    "name": "John",
+                    "user_name": "John",
                     "num_votes": "31231",
                     "thumb_url": "http://xxxx.xx/thumbxxx.jpg",
                     "url":  "http://xxxx.xx/imagexxx.jpg",
@@ -148,11 +148,12 @@
                         response.data.push
                         ({
                             "serial": index,
-                            "name": "name " + index,
+                            "school_name": "school name " + index,
+                            "class_name": " class name " + index,
+                            "user_name": "user name " + index,
                             "num_votes": parseInt(Math.random()*3000),
                             "description": 'description ' + index,
-                            "thumb_url": "./images/entries-list-thumb-sample.png",
-                            "url": "./images/entries-list-thumb-sample.png"
+                            "thumb_url": "./images/search-sample.png"
                         });
 
                         if(index >= (numEntries-1)) break;

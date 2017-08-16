@@ -62,6 +62,8 @@
             ruleCheck: $doms.container.find('#participate-form-checkbox')
         };
 
+        self.Success.init($('#participate-form-success'));
+
         $doms.container.detach();
     }
 
@@ -82,6 +84,8 @@
 
     function hide(cb)
     {
+        self.Success.hide();
+
         var tl = new TimelineMax;
         tl.to($doms.container, .4, {autoAlpha: 0});
         tl.add(function ()
@@ -130,8 +134,8 @@
                     }
                     else
                     {
-                        //Participate.Success.setShareEntrySerial(response.serial);
-                        //Participate.Success.show();
+                        self.Success.setShareEntrySerial(response.serial);
+                        self.Success.show();
                     }
 
                     Loading.hide();
@@ -188,8 +192,8 @@
         }
         else formObj.email = dom.value;
 
-        //formObj.fb_uid = Main.settings.fbUid;
-        //formObj.fb_token = Main.settings.fbToken;
+        formObj.fb_uid = FBHelper._uid;
+        formObj.fb_token = FBHelper._token;
 
         //_lastUserName = formObj.name;
 

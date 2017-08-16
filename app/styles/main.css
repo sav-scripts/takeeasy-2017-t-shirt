@@ -543,7 +543,7 @@ body {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.3);
 }
-#dialog-is-ready .container {
+#dialog-is-ready .content {
   position: absolute;
   width: 474px;
   height: 261px;
@@ -554,7 +554,7 @@ body {
   background-image: url("../images/participate-alert-base.png");
   background-size: auto;
 }
-#dialog-is-ready .container .btn-yes {
+#dialog-is-ready .content .btn-yes {
   position: absolute;
   left: 14px;
   top: 146px;
@@ -565,7 +565,7 @@ body {
   background-image: url("../images/participate-alert-btn-yes.png");
   background-size: auto;
 }
-#dialog-is-ready .container .btn-no {
+#dialog-is-ready .content .btn-no {
   position: absolute;
   left: 247px;
   top: 146px;
@@ -576,15 +576,15 @@ body {
   background-image: url("../images/participate-alert-btn-no.png");
   background-size: auto;
 }
-#dialog-is-ready .container .btn-yes,
-#dialog-is-ready .container .btn-no {
+#dialog-is-ready .content .btn-yes,
+#dialog-is-ready .content .btn-no {
   cursor: pointer;
 }
-#dialog-is-ready .container .btn-yes:active,
-#dialog-is-ready .container .btn-no:active {
+#dialog-is-ready .content .btn-yes:active,
+#dialog-is-ready .content .btn-no:active {
   margin-top: 1px;
 }
-#dialog-is-ready .container .btn-close {
+#dialog-is-ready .content .btn-close {
   position: absolute;
   left: 423px;
   top: 0px;
@@ -701,4 +701,48 @@ body {
   left: 153px;
   top: 319px;
   width: 415px;
+}
+#participate-form-success {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+#participate-form-success .content {
+  position: absolute;
+  width: 474px;
+  height: 401px;
+  left: 50%;
+  top: 50%;
+  margin-left: -236px;
+  margin-top: -200.5px;
+  background-image: url("../images/participate-form-success-base.png");
+  background-size: auto;
+}
+#participate-form-success .content .btn-share {
+  position: absolute;
+  left: 135px;
+  top: 326px;
+  width: 190px;
+  height: 45px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/participate-form-success-btn-share.png");
+  background-size: auto;
+  cursor: pointer;
+}
+#participate-form-success .content .btn-share:active {
+  margin-top: 1px;
+}
+#participate-form-success .content .btn-close {
+  position: absolute;
+  left: 423px;
+  top: 0px;
+  width: 50px;
+  height: 50px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/common-btn-close.png");
+  background-size: auto;
+  cursor: pointer;
 }

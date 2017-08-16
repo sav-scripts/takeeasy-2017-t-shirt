@@ -14,6 +14,7 @@
             isMobile: false,
 
             useFakeData: false,
+            debug: false,
 
             fb_appid: "1876517482676293",
             fbPermissions: [],
@@ -24,7 +25,10 @@
             fbState: null,
 
             isiOS: false,
-            isLineBrowser: false
+            isLineBrowser: false,
+
+            isEnd: false,
+            endMessage: '活動已經結束，感謝您的參與'
         },
 
         viewport:
@@ -58,6 +62,7 @@
                 Main.settings.isLocal = true;
 
                 if(Utility.urlParams.usefakedata == '1') Main.settings.useFakeData = true;
+                if(Utility.urlParams.debug == '1') Main.settings.debug = true;
             }
 
 
@@ -101,28 +106,66 @@
 
                     hashChangeTester: function(hashName)
                     {
+                        if(!Main.settings.debug)
+                        {
+                            if(hashName == '/Participate')
+                            {
+                                if(!FBHelper._token)
+                                {
+                                    //console.log("no token");
+                                    SceneHandler.setHash(Main.defaultHash);
+                                    return null;
+                                }
+                            }
+                        }
 
-                        //if(hashName == "/Publish")
-                        //{
-                        //    if(Main.settings.isEnd)
-                        //    {
-                        //        alert(Main.settings.endMessage);
-                        //
-                        //        return Main.defaultHash;
-                        //    }
-                        //
-                        //    if(!FBHelper._token && !Main.testmode)
-                        //    {
-                        //        SceneHandler.toHash(self.defaultHash);
-                        //        return null;
-                        //    }
-                        //    else if(!Modernizr.canvas)
-                        //    {
-                        //        alert('您的瀏覽器不支援使用canvas, 請使用較新的瀏覽器');
-                        //        SceneHandler.toHash(self.defaultHash);
-                        //        return null;
-                        //    }
-                        //}
+                        if(hashName == '/ParticipateForm')
+                        {
+                            if(!Main.settings.debug)
+                            {
+                                if(!Participate.getIsReadySend() || !FBHelper._token)
+                                {
+                                    SceneHandler.setHash(Main.defaultHash);
+                                    return null;
+                                }
+                            }
+                        }
+
+                        if(hashName == '/Participate')
+                        {
+                            if(Main.settings.isEnd)
+                            {
+                                alert(Main.settings.endMessage);
+
+                                SceneHandler.setHash(Main.defaultHash);
+                                return null;
+                            }
+
+
+                            if(!Main.settings.debug && !FBHelper._token)
+                            {
+                                if(!FBHelper._token)
+                                {
+                                    SceneHandler.setHash(Main.defaultHash);
+                                    return null;
+                                }
+                            }
+
+
+                            if(!Modernizr.canvas)
+                            {
+                                alert('您的瀏覽器不支援 html5 canvas, 請使用其他的瀏覽器瀏覽此單元');
+                                SceneHandler.setHash(Main.defaultHash);
+                                return null;
+                            }
+
+                            if(self.settings.isLineBrowser)
+                            {
+                                alert('您的瀏覽器不支援上傳檔案, 請使用其他的瀏覽器瀏覽此單元');
+                                SceneHandler.setHash(Main.defaultHash);
+                                return null;
+                            }
+                        }
 
                         return hashName;
                     }
