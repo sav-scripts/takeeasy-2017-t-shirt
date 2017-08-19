@@ -99,7 +99,9 @@
 
     function reset()
     {
-        $doms.fields.name.val('');
+        $doms.fields.schoolName.val('');
+        $doms.fields.className.val('');
+        $doms.fields.userName.val('');
         $doms.fields.phone.val('');
         $doms.fields.email.val('');
         $doms.fields.ruleCheck[0].checked = false;
@@ -107,8 +109,8 @@
 
     function trySend()
     {
-        //var formObj = checkForm();
-        var formObj = {};
+        var formObj = checkForm();
+        //var formObj = {};
 
         if(formObj)
         {
@@ -194,10 +196,6 @@
 
         formObj.fb_uid = FBHelper._uid;
         formObj.fb_token = FBHelper._token;
-
-        //_lastUserName = formObj.name;
-
-        //formObj.paint_data = CanvasProxy.getBase64JPEG();
 
         return formObj;
 

@@ -13,7 +13,8 @@
 
         "entries_vote":
         {
-            "error": ""
+            "error": "",
+            "share_url": "./misc/share.jpg"
         },
 
         "entries_search":
@@ -42,11 +43,14 @@
 
                 {
                     "serial": "0088",
-                    "status": "approved",
-                    "name": "John",
+                    //"status": "approved",
+                    //"status": "reviewing",
+                    "status": "unapproved",
+                    "school_name": "sc1",
+                    "class_name": "cn1",
+                    "user_name": "John",
                     "num_votes": "31231",
-                    "thumb_url": "./images/entries-list-thumb-sample.png",
-                    "url":  "./images/entries-list-thumb-sample.png",
+                    "thumb_url": "./images/search-sample.jpg",
                     "description": "bablalalala"
                 }
             ],
@@ -74,12 +78,6 @@
             page_size: 1
         },
 
-        "filling_attending":
-        {
-            error: "",
-            share_url: "https://2016summer.tw/misc/fb-share.jpg"
-        },
-
         "index_get_examples":
         {
             "error": "",
@@ -91,29 +89,11 @@
                     "./images/index-t-shirt-demo.png",
                     "./images/index-t-shirt-demo.png"
                 ]
-        },
-        "get_filling_selections":
-        {
-            "error": "",
-            "selections":
-            [
-                "./images/fill-filling-work-1.png",
-                "./images/fill-filling-work-1.png",
-                "./images/fill-filling-work-1.png",
-                "./images/fill-filling-work-1.png"
-            ],
-            "authors":
-            [
-                "xxsdfafasfsadfsadfsadfdsax",
-                "xxx",
-                "xxx",
-                "xxx"
-            ]
         }
     };
 
     var _apiExtension = "",
-        _apiPath = "../process/";
+        _apiPath = "../api/";
 
     window.ApiProxy =
     {
@@ -132,14 +112,16 @@
 
                 if(fakeDataName == 'entries_search')
                 {
-                    response.page_index = params.page_index;
-                    response.data = [];
 
                     var pageIndex = params.page_index,
                         startIndex = pageIndex * params.page_size,
                         index,
-                        numEntries = 123,
+                        numEntries = 23,
                         i;
+
+                    response.page_index = params.page_index;
+                    response.num_pages = Math.ceil(numEntries / params.page_size);
+                    response.data = [];
 
                     for(i=0;i<params.page_size;i++)
                     {
@@ -153,7 +135,7 @@
                             "user_name": "user name " + index,
                             "num_votes": parseInt(Math.random()*3000),
                             "description": 'description ' + index,
-                            "thumb_url": "./images/search-sample.png"
+                            "thumb_url": "./images/search-sample.jpg"
                         });
 
                         if(index >= (numEntries-1)) break;

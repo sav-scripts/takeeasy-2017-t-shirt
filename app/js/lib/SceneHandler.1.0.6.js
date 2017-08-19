@@ -404,9 +404,9 @@
                 }
                 else
                 {
-                    if(_cbBeforeStageIn) _cbBeforeStageIn.call(null, _currentHash, _lastHash);
                     currentObj.stageClass.stageOut(options, function()
                     {
+                        if(_cbBeforeStageIn) _cbBeforeStageIn.call(null, _currentHash, _lastHash);
                         targetObj.stageClass.stageIn(options, toContentComplete);
                     });
                 }

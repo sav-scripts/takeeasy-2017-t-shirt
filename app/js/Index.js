@@ -142,6 +142,12 @@
                 else
                 {
                     _exampleList = response.examples;
+
+                    if(_exampleList.length == 0)
+                    {
+                        _exampleList = ["./images/index-t-shirt-demo.png"];
+                    }
+
                     _numExamples = _exampleList.length;
                     loadImages(function()
                     {

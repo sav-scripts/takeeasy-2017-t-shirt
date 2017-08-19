@@ -14,11 +14,11 @@ body{
     position: absolute;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y:auto;
+    overflow: auto;
     background: @background-color;
     padding: 0;
     margin: 0;
+//    min-width: @main-width;
 }
 .template-container{
     position: absolute;
@@ -68,7 +68,7 @@ body{
         width: 100%;
         height: 100%;
 
-//        .image-bg('layouts/participate-form.jpg');
+//        .image-bg('layouts/rule.jpg');
 
         background-position: center top;
 
@@ -84,7 +84,16 @@ body{
         height: 36px;
     }
 
-    .abs-div-2(logo, 22, 11, 137, 41, 'logo.png');
+
+}
+
+#logo{
+    position: fixed;
+    left: 22px;
+    top:11px;
+    width: 137px;
+    height: 41px;
+    .image-bg('logo.png');
 }
 
 #scene-container{
@@ -96,7 +105,8 @@ body{
     margin-left: auto;
     margin-right: auto;
 
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     &.fix-size-mode{
 
@@ -107,6 +117,8 @@ body{
             top:50%;
             margin-left: -@main-width * .5;
             margin-top: -@main-height * .5;
+
+            overflow: hidden;
         }
 
     }
@@ -117,6 +129,8 @@ body{
     position: fixed;
     width: 100%;
     height: 100%;
+    left:0;
+    top:0;
     display: none;
 
     &.active-mode{
@@ -251,8 +265,8 @@ body{
         top: 509px;
 
         .user-example{
-            @w: 417px;
-            @h: 483px;
+            @w: 385px;
+            @h: 440px;
 //            .abs-div-2(none, -@w*.5, -@h*.5, @w, @h,'index-t-shirt-demo.png');
             .abs-div-2(none, -@w*.5, -@h*.5, @w, @h);
 
@@ -490,6 +504,9 @@ body{
     width: 100%;
     height: 100%;
 
+    top:0;
+    left:0;
+
     background-color: rgba(255,255,255,.3);
 
     .content{
@@ -520,5 +537,574 @@ body{
             cursor: pointer;
         }
 
+    }
+}
+
+/* entries */
+#entries{
+    position:static;
+
+    .abs-div-2(title, 102, 66, 438, 80, 'entries-title.png');
+
+    .search-bar{
+        .abs-div-2(none, 81, 167, 478, 31, 'entries-search-bar.png');
+
+        .search-input{
+//            background-color: rgba(255,0,0,.3);
+            background:transparent;
+            border: none;
+            padding: 5px 10px;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 270px;
+            height: 20px;
+
+            .default-font(14px);
+        }
+
+        .btn-search-name{
+            position: absolute;
+            left:292px;
+            top:0;
+            width: 90px;
+            height:30px;
+//            background-color: rgba(255,0,0,.3);
+            cursor: pointer;
+        }
+
+        .btn-search-serial{
+            position: absolute;
+            left:386px;
+            top:0;
+            width: 90px;
+            height:30px;
+//            background-color: rgba(255,0,0,.3);
+            cursor: pointer;
+        }
+    }
+
+    .abs-div-2(tab-latest, 51, 208, 118, 34, 'entries-tab-latest.png');
+    .abs-div-2(tab-popular, 170, 208, 118, 34, 'entries-tab-popular.png');
+
+    .tab-latest, .tab-popular{
+
+        background-position: bottom;
+        cursor: pointer;
+
+        &.active-mode{
+            background-position: top;
+        }
+
+
+    }
+
+    .entries-container{
+        position: relative;
+
+        margin-left:51px;
+        margin-top:244px;
+
+
+        @width:536px;
+        @height-close:372px;
+//        @height-close:572px;
+
+        width: @width;
+
+
+        .entry{
+            position: relative;
+            width: @width;
+//            height: @height-close;
+            height: auto;
+
+            margin-left: 0;
+            margin-bottom: 10px;
+
+            border: 1px solid black;
+            background-color: white;
+
+            transition: height, .4s, ease-out;
+
+            .thumb{
+                position: absolute;
+                left: 41px;
+                top: 17px;
+                width: 456px;
+                height: 228px;
+//                background-color: rgba(255,0,0,.3);
+                background-color: #efefef;
+            }
+
+            .fields{
+                .abs-div-2(none, 43, 254, 361, 57, 'entries-field-text.png');
+
+                div{
+                    position: absolute;
+                    height: 30px;
+                    .default-font(20px);
+                    font-weight: bold;
+
+                    word-break: break-all;
+                    overflow: hidden;
+
+//                    background-color: rgba(255,0,0,.3);
+                }
+
+                .num-votes{
+                    left:70px;
+                    top:-6px;
+                    width: 148px;
+
+                    color:#fc6d03;
+                    font-size: 30px;
+                    font-family: arial, sans-serif;
+                }
+
+                .school-name{
+                    left:294px;
+                    top:-4px;
+                    width: 160px;
+                }
+
+                .class-name{
+                    left:124px;
+                    top:30px;
+                    width: 94px;
+                }
+
+                .user-name{
+                    left:318px;
+                    top:30px;
+                    width: 136px;
+                }
+            }
+
+            .btn-vote{
+//                .abs-div-2(none, 43, 318, 150, 45, 'entries-btn-vote.png');
+
+                position: relative;
+                margin-left: 349px;
+                margin-top: 318px;
+                margin-bottom: 10px;
+                width: 150px;
+                height: 45px;
+                .image-bg('entries-btn-vote.png');
+
+                cursor: pointer;
+//                &:active{
+//                    margin-top: 1px;
+//                }
+            }
+
+            .btn-switch{
+                @c: #a9a9a9;
+                position: absolute;
+                left: 42px;
+                top:326px;
+//                width: 140px;
+//                height: 30px;
+                text-align: center;
+                .default-font(18px, @c);
+                border: 1px solid @c;
+                border-radius: 5px;
+
+                padding: 5px 10px;
+
+                cursor: pointer;
+
+                &::after{
+                    content: '觀看創作概念▽';
+                }
+
+            }
+
+            .div-line{
+
+                position: relative;
+                margin-left:42px;
+                margin-top:10px;
+                width: 454px;
+                height: 1px;
+                background-color: lightgray;
+
+                display: none;
+            }
+
+            .description{
+                position: relative;
+//                left:42px;
+//                top:383px;
+                margin-left:42px;
+                margin-top: 3px;
+                margin-bottom: 10px;
+
+                width: 454px;
+
+                .default-font(16px);
+
+                display: none;
+            }
+
+            &.open-mode{
+                .div-line, .description{
+                    display: block;
+                }
+
+                .btn-switch::after{
+                    content: '隱藏創作概念△';
+                }
+            }
+
+        }
+    }
+
+    .bleed{
+        position: relative;
+        width: 640px;
+        height: 130px;
+        margin-top: 10px;
+
+        .loading-hint{
+            position: absolute;
+            width: 300px;
+            left:50%;
+            margin-left: -150px;
+            top: 20px;
+            height: 30px;
+            text-align: center;
+
+            .default-font(16px);
+
+            visibility: hidden;
+
+            @keyframes flash {
+                from {
+                    opacity: 1;
+                }
+
+                to {
+                    opacity: .1;
+                }
+            }
+
+            animation-duration: 0.4s;
+            animation-name: flash;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+
+
+        &.active-mode{
+
+            .loading-hint{
+                visibility: visible;
+            }
+        }
+    }
+
+}
+
+
+#dialog-reviewing{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    top:0;
+    left:0;
+
+    background-color: rgba(255,255,255,.3);
+
+    .content{
+        @w: 474px;
+        @h: 243px;
+        position: absolute;
+        width: @w;
+        height: @h;
+        left:50%;
+        top: 50%;
+        margin-left: -@w * .5 + 1px;
+        margin-top: -@h * .5;
+
+        .image-bg("dialog-reviewing-base.png");
+
+
+
+        .btn-continue{
+            .abs-div-2(none, 162, 166, 150, 45, 'dialog-reviewing-btn-continue.png');
+            cursor: pointer;
+            &:active{
+                margin-top: 1px;
+            }
+        }
+
+        .btn-close{
+            .abs-div-2(none, 423, 0, 50, 50, "common-btn-close.png");
+            cursor: pointer;
+        }
+
+    }
+}
+
+
+#dialog-unapproved{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    top:0;
+    left:0;
+
+    background-color: rgba(255,255,255,.3);
+
+    .content{
+        @w: 474px;
+        @h: 243px;
+        position: absolute;
+        width: @w;
+        height: @h;
+        left:50%;
+        top: 50%;
+        margin-left: -@w * .5 + 1px;
+        margin-top: -@h * .5;
+
+        .image-bg("dialog-unapproved-base.png");
+
+
+
+        .btn-continue{
+            .abs-div-2(none, 162, 166, 150, 45, 'dialog-reviewing-btn-continue.png');
+            cursor: pointer;
+            &:active{
+                margin-top: 1px;
+            }
+        }
+
+        .btn-close{
+            .abs-div-2(none, 423, 0, 50, 50, "common-btn-close.png");
+            cursor: pointer;
+        }
+
+    }
+}
+
+#vote-form{
+    position: absolute;
+
+    .abs-div-2(title, 102, 66, 430, 80, 'participate-form-title.png');
+    .abs-div-2(texts, 55, 175, 473, 752, 'vote-form-texts.png');
+
+    .btn-send{
+        .abs-div-2(none, 247, 953, 150, 45, 'participate-form-btn-send.png');
+
+        cursor: pointer;
+
+        &:active{
+            margin-top: 1px;
+        }
+    }
+
+    .checkbox{
+        position: absolute;
+        left: 53px;
+        top: 905px;
+    }
+
+    .rule-container{
+        position: absolute;
+        left: 51px;
+        top: 296px;
+        width: 536px;
+        height: 585px;
+        background-color: white;
+        border: 1px solid black;
+
+        overflow-y:  auto;
+
+        .rule-texts{
+            position: relative;
+            width: 500px;
+            height: 611px;
+            margin-left: 5px;
+            margin-top: 1px;
+            .image-bg('participate-form-rules.png');
+        }
+
+    }
+
+    .fields{
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        input{
+            position: absolute;
+
+            background-color: #ffffff;
+            border: 1px solid black;
+
+            height: 23px;
+
+            .default-font(14px);
+
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .field-user-name{
+
+            left: 140px;
+            top: 211px;
+            width: 161px;
+
+        }
+
+        .field-phone{
+
+            left: 409px;
+            top: 211px;
+            width: 160px;
+
+        }
+
+        .field-email{
+
+            left: 157px;
+            top: 247px;
+            width: 412px;
+
+        }
+    }
+}
+
+#vote-form-success{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    top:0;
+    left:0;
+
+    background-color: rgba(255,255,255,.3);
+
+    .content{
+        @w: 474px;
+        @h: 401px;
+        position: absolute;
+        width: @w;
+        height: @h;
+        left:50%;
+        top: 50%;
+        margin-left: -@w * .5 + 1px;
+        margin-top: -@h * .5;
+
+        .image-bg("vote-form-success-base.png");
+
+
+
+        .btn-share{
+            .abs-div-2(none, 135, 326, 190, 45, 'participate-form-success-btn-share.png');
+            cursor: pointer;
+            &:active{
+                margin-top: 1px;
+            }
+        }
+
+        .btn-close{
+            .abs-div-2(none, 423, 0, 50, 50, "common-btn-close.png");
+            cursor: pointer;
+        }
+
+    }
+}
+
+#vote-form-share-success{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    top:0;
+    left:0;
+
+    background-color: rgba(255,255,255,.3);
+
+    .content{
+        @w: 474px;
+        @h: 261px;
+        position: absolute;
+        width: @w;
+        height: @h;
+        left:50%;
+        top: 50%;
+        margin-left: -@w * .5 + 1px;
+        margin-top: -@h * .5;
+
+        .image-bg("vote-form-share-success-base.png");
+
+        .btn-participate{
+            .abs-div-2(none, 65, 166, 156, 45, 'vote-form-share-success-btn-participate.png');
+            cursor: pointer;
+            &:active{
+                margin-top: 1px;
+            }
+        }
+
+        .btn-entries{
+            .abs-div-2(none, 255, 166, 156, 45, 'vote-form-share-success-btn-entries.png');
+            cursor: pointer;
+            &:active{
+                margin-top: 1px;
+            }
+        }
+
+        .btn-close{
+            .abs-div-2(none, 423, 0, 50, 50, "common-btn-close.png");
+            cursor: pointer;
+        }
+
+    }
+}
+
+/* reviewers */
+#reviewers{
+    position: absolute;
+
+    .abs-div-2(title, 102, 66, 438, 80, 'reviewers-title.png');
+
+    .abs-div-2(reviewer-1, 106, 168, 430, 256, 'reviewers-reviewer-1.png');
+    .abs-div-2(reviewer-2, 106, 440, 430, 256, 'reviewers-reviewer-2.png');
+    .abs-div-2(reviewer-3, 106, 714, 430, 256, 'reviewers-reviewer-3.png');
+}
+
+/* rule */
+#rule{
+    position: absolute;
+
+    .abs-div-2(title, 102, 66, 438, 80, 'rule-title.png');
+
+    .rule-container{
+        position: absolute;
+        left: 51px;
+        top: 175px;
+        width: 536px;
+        height: 812px;
+        background-color: #ffffff;
+        border: 1px solid black;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        .rule-content{
+            position: relative;
+            margin-left: 25px;
+            margin-top: 11px;
+            width: 473px;
+            height: 787px;
+            .image-bg('rule-contents.png');
+        }
     }
 }

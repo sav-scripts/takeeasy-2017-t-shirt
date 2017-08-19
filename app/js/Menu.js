@@ -29,7 +29,8 @@
 
             $doms.btnParticipate = $doms.menuContainer.find(".button:nth-child(3)").on(_CLICK_, function()
             {
-                SceneHandler.toHash("/Participate");
+                //SceneHandler.toHash("/Participate");
+                Main.loginFB('/Participate');
                 self.close();
             });
 
@@ -41,7 +42,7 @@
 
             $doms.btnReviewer = $doms.menuContainer.find(".button:nth-child(7)").on(_CLICK_, function()
             {
-                SceneHandler.toHash("/Reviewer");
+                SceneHandler.toHash("/Reviewers");
                 self.close();
             });
 
@@ -53,14 +54,16 @@
 
             $doms.btnWinners = $doms.menuContainer.find(".button:nth-child(11)").on(_CLICK_, function()
             {
-                SceneHandler.toHash("/Winners");
-                self.close();
+                alert("單元尚未開放, 敬請期待");
+                //SceneHandler.toHash("/Winners");
+                //self.close();
             });
 
             $doms.btnTShow = $doms.menuContainer.find(".button:nth-child(13)").on(_CLICK_, function()
             {
-                SceneHandler.toHash("/TShow");
-                self.close();
+                alert("單元尚未開放, 敬請期待");
+                //SceneHandler.toHash("/TShow");
+                //self.close();
             });
         },
 
@@ -86,6 +89,11 @@
             $doms.menuContainer.toggleClass("open-mode", _isOpen);
 
             $doms.menuCover.toggleClass("active-mode", _isOpen);
+        },
+
+        resize: function()
+        {
+
         }
 
     };

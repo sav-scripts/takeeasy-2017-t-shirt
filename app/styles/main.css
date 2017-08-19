@@ -96,8 +96,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: auto;
   background: #faefd8;
   padding: 0;
   margin: 0;
@@ -157,14 +156,12 @@ body {
   width: 385px;
   height: 36px;
 }
-#main-background .logo {
-  position: absolute;
+#logo {
+  position: fixed;
   left: 22px;
   top: 11px;
   width: 137px;
   height: 41px;
-  margin-left: 0px;
-  margin-top: 0px;
   background-image: url("../images/logo.png");
   background-size: auto;
 }
@@ -175,7 +172,8 @@ body {
   min-height: 1080px;
   margin-left: auto;
   margin-right: auto;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 @media (min-height: 1080px) {
   #scene-container.fix-size-mode {
@@ -184,6 +182,7 @@ body {
     top: 50%;
     margin-left: -320px;
     margin-top: -540px;
+    overflow: hidden;
   }
 }
 /* menu */
@@ -191,6 +190,8 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
+  left: 0;
+  top: 0;
   display: none;
 }
 #menu-cover.active-mode {
@@ -405,10 +406,10 @@ body {
 }
 #index .examples .user-example {
   position: absolute;
-  left: -208.5px;
-  top: -241.5px;
-  width: 417px;
-  height: 483px;
+  left: -192.5px;
+  top: -220px;
+  width: 385px;
+  height: 440px;
   margin-left: 0px;
   margin-top: 0px;
 }
@@ -706,6 +707,8 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
   background-color: rgba(255, 255, 255, 0.3);
 }
 #participate-form-success .content {
@@ -745,4 +748,623 @@ body {
   background-image: url("../images/common-btn-close.png");
   background-size: auto;
   cursor: pointer;
+}
+/* entries */
+#entries {
+  position: static;
+}
+#entries .title {
+  position: absolute;
+  left: 102px;
+  top: 66px;
+  width: 438px;
+  height: 80px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/entries-title.png");
+  background-size: auto;
+}
+#entries .search-bar {
+  position: absolute;
+  left: 81px;
+  top: 167px;
+  width: 478px;
+  height: 31px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/entries-search-bar.png");
+  background-size: auto;
+}
+#entries .search-bar .search-input {
+  background: transparent;
+  border: none;
+  padding: 5px 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 270px;
+  height: 20px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 14px;
+  color: #000;
+}
+#entries .search-bar .btn-search-name {
+  position: absolute;
+  left: 292px;
+  top: 0;
+  width: 90px;
+  height: 30px;
+  cursor: pointer;
+}
+#entries .search-bar .btn-search-serial {
+  position: absolute;
+  left: 386px;
+  top: 0;
+  width: 90px;
+  height: 30px;
+  cursor: pointer;
+}
+#entries .tab-latest {
+  position: absolute;
+  left: 51px;
+  top: 208px;
+  width: 118px;
+  height: 34px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/entries-tab-latest.png");
+  background-size: auto;
+}
+#entries .tab-popular {
+  position: absolute;
+  left: 170px;
+  top: 208px;
+  width: 118px;
+  height: 34px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/entries-tab-popular.png");
+  background-size: auto;
+}
+#entries .tab-latest,
+#entries .tab-popular {
+  background-position: bottom;
+  cursor: pointer;
+}
+#entries .tab-latest.active-mode,
+#entries .tab-popular.active-mode {
+  background-position: top;
+}
+#entries .entries-container {
+  position: relative;
+  margin-left: 51px;
+  margin-top: 244px;
+  width: 536px;
+}
+#entries .entries-container .entry {
+  position: relative;
+  width: 536px;
+  height: auto;
+  margin-left: 0;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  background-color: white;
+  transition: height, 0.4s, ease-out;
+}
+#entries .entries-container .entry .thumb {
+  position: absolute;
+  left: 41px;
+  top: 17px;
+  width: 456px;
+  height: 228px;
+  background-color: #efefef;
+}
+#entries .entries-container .entry .fields {
+  position: absolute;
+  left: 43px;
+  top: 254px;
+  width: 361px;
+  height: 57px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/entries-field-text.png");
+  background-size: auto;
+}
+#entries .entries-container .entry .fields div {
+  position: absolute;
+  height: 30px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 20px;
+  color: #000;
+  font-weight: bold;
+  word-break: break-all;
+  overflow: hidden;
+}
+#entries .entries-container .entry .fields .num-votes {
+  left: 70px;
+  top: -6px;
+  width: 148px;
+  color: #fc6d03;
+  font-size: 30px;
+  font-family: arial, sans-serif;
+}
+#entries .entries-container .entry .fields .school-name {
+  left: 294px;
+  top: -4px;
+  width: 160px;
+}
+#entries .entries-container .entry .fields .class-name {
+  left: 124px;
+  top: 30px;
+  width: 94px;
+}
+#entries .entries-container .entry .fields .user-name {
+  left: 318px;
+  top: 30px;
+  width: 136px;
+}
+#entries .entries-container .entry .btn-vote {
+  position: relative;
+  margin-left: 349px;
+  margin-top: 318px;
+  margin-bottom: 10px;
+  width: 150px;
+  height: 45px;
+  background-image: url("../images/entries-btn-vote.png");
+  background-size: auto;
+  cursor: pointer;
+}
+#entries .entries-container .entry .btn-switch {
+  position: absolute;
+  left: 42px;
+  top: 326px;
+  text-align: center;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 18px;
+  color: #a9a9a9;
+  border: 1px solid #a9a9a9;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+#entries .entries-container .entry .btn-switch::after {
+  content: '觀看創作概念▽';
+}
+#entries .entries-container .entry .div-line {
+  position: relative;
+  margin-left: 42px;
+  margin-top: 10px;
+  width: 454px;
+  height: 1px;
+  background-color: lightgray;
+  display: none;
+}
+#entries .entries-container .entry .description {
+  position: relative;
+  margin-left: 42px;
+  margin-top: 3px;
+  margin-bottom: 10px;
+  width: 454px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 16px;
+  color: #000;
+  display: none;
+}
+#entries .entries-container .entry.open-mode .div-line,
+#entries .entries-container .entry.open-mode .description {
+  display: block;
+}
+#entries .entries-container .entry.open-mode .btn-switch::after {
+  content: '隱藏創作概念△';
+}
+#entries .bleed {
+  position: relative;
+  width: 640px;
+  height: 130px;
+  margin-top: 10px;
+}
+#entries .bleed .loading-hint {
+  position: absolute;
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+  top: 20px;
+  height: 30px;
+  text-align: center;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 16px;
+  color: #000;
+  visibility: hidden;
+  animation-duration: 0.4s;
+  animation-name: flash;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes flash {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: .1;
+  }
+}
+#entries .bleed.active-mode .loading-hint {
+  visibility: visible;
+}
+#dialog-reviewing {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+#dialog-reviewing .content {
+  position: absolute;
+  width: 474px;
+  height: 243px;
+  left: 50%;
+  top: 50%;
+  margin-left: -236px;
+  margin-top: -121.5px;
+  background-image: url("../images/dialog-reviewing-base.png");
+  background-size: auto;
+}
+#dialog-reviewing .content .btn-continue {
+  position: absolute;
+  left: 162px;
+  top: 166px;
+  width: 150px;
+  height: 45px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/dialog-reviewing-btn-continue.png");
+  background-size: auto;
+  cursor: pointer;
+}
+#dialog-reviewing .content .btn-continue:active {
+  margin-top: 1px;
+}
+#dialog-reviewing .content .btn-close {
+  position: absolute;
+  left: 423px;
+  top: 0px;
+  width: 50px;
+  height: 50px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/common-btn-close.png");
+  background-size: auto;
+  cursor: pointer;
+}
+#dialog-unapproved {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+#dialog-unapproved .content {
+  position: absolute;
+  width: 474px;
+  height: 243px;
+  left: 50%;
+  top: 50%;
+  margin-left: -236px;
+  margin-top: -121.5px;
+  background-image: url("../images/dialog-unapproved-base.png");
+  background-size: auto;
+}
+#dialog-unapproved .content .btn-continue {
+  position: absolute;
+  left: 162px;
+  top: 166px;
+  width: 150px;
+  height: 45px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/dialog-reviewing-btn-continue.png");
+  background-size: auto;
+  cursor: pointer;
+}
+#dialog-unapproved .content .btn-continue:active {
+  margin-top: 1px;
+}
+#dialog-unapproved .content .btn-close {
+  position: absolute;
+  left: 423px;
+  top: 0px;
+  width: 50px;
+  height: 50px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/common-btn-close.png");
+  background-size: auto;
+  cursor: pointer;
+}
+#vote-form {
+  position: absolute;
+}
+#vote-form .title {
+  position: absolute;
+  left: 102px;
+  top: 66px;
+  width: 430px;
+  height: 80px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/participate-form-title.png");
+  background-size: auto;
+}
+#vote-form .texts {
+  position: absolute;
+  left: 55px;
+  top: 175px;
+  width: 473px;
+  height: 752px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/vote-form-texts.png");
+  background-size: auto;
+}
+#vote-form .btn-send {
+  position: absolute;
+  left: 247px;
+  top: 953px;
+  width: 150px;
+  height: 45px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/participate-form-btn-send.png");
+  background-size: auto;
+  cursor: pointer;
+}
+#vote-form .btn-send:active {
+  margin-top: 1px;
+}
+#vote-form .checkbox {
+  position: absolute;
+  left: 53px;
+  top: 905px;
+}
+#vote-form .rule-container {
+  position: absolute;
+  left: 51px;
+  top: 296px;
+  width: 536px;
+  height: 585px;
+  background-color: white;
+  border: 1px solid black;
+  overflow-y: auto;
+}
+#vote-form .rule-container .rule-texts {
+  position: relative;
+  width: 500px;
+  height: 611px;
+  margin-left: 5px;
+  margin-top: 1px;
+  background-image: url("../images/participate-form-rules.png");
+  background-size: auto;
+}
+#vote-form .fields {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#vote-form .fields input {
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid black;
+  height: 23px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 14px;
+  color: #000;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#vote-form .fields .field-user-name {
+  left: 140px;
+  top: 211px;
+  width: 161px;
+}
+#vote-form .fields .field-phone {
+  left: 409px;
+  top: 211px;
+  width: 160px;
+}
+#vote-form .fields .field-email {
+  left: 157px;
+  top: 247px;
+  width: 412px;
+}
+#vote-form-success {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+#vote-form-success .content {
+  position: absolute;
+  width: 474px;
+  height: 401px;
+  left: 50%;
+  top: 50%;
+  margin-left: -236px;
+  margin-top: -200.5px;
+  background-image: url("../images/vote-form-success-base.png");
+  background-size: auto;
+}
+#vote-form-success .content .btn-share {
+  position: absolute;
+  left: 135px;
+  top: 326px;
+  width: 190px;
+  height: 45px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/participate-form-success-btn-share.png");
+  background-size: auto;
+  cursor: pointer;
+}
+#vote-form-success .content .btn-share:active {
+  margin-top: 1px;
+}
+#vote-form-success .content .btn-close {
+  position: absolute;
+  left: 423px;
+  top: 0px;
+  width: 50px;
+  height: 50px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/common-btn-close.png");
+  background-size: auto;
+  cursor: pointer;
+}
+#vote-form-share-success {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+#vote-form-share-success .content {
+  position: absolute;
+  width: 474px;
+  height: 261px;
+  left: 50%;
+  top: 50%;
+  margin-left: -236px;
+  margin-top: -130.5px;
+  background-image: url("../images/vote-form-share-success-base.png");
+  background-size: auto;
+}
+#vote-form-share-success .content .btn-participate {
+  position: absolute;
+  left: 65px;
+  top: 166px;
+  width: 156px;
+  height: 45px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/vote-form-share-success-btn-participate.png");
+  background-size: auto;
+  cursor: pointer;
+}
+#vote-form-share-success .content .btn-participate:active {
+  margin-top: 1px;
+}
+#vote-form-share-success .content .btn-entries {
+  position: absolute;
+  left: 255px;
+  top: 166px;
+  width: 156px;
+  height: 45px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/vote-form-share-success-btn-entries.png");
+  background-size: auto;
+  cursor: pointer;
+}
+#vote-form-share-success .content .btn-entries:active {
+  margin-top: 1px;
+}
+#vote-form-share-success .content .btn-close {
+  position: absolute;
+  left: 423px;
+  top: 0px;
+  width: 50px;
+  height: 50px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/common-btn-close.png");
+  background-size: auto;
+  cursor: pointer;
+}
+/* reviewers */
+#reviewers {
+  position: absolute;
+}
+#reviewers .title {
+  position: absolute;
+  left: 102px;
+  top: 66px;
+  width: 438px;
+  height: 80px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/reviewers-title.png");
+  background-size: auto;
+}
+#reviewers .reviewer-1 {
+  position: absolute;
+  left: 106px;
+  top: 168px;
+  width: 430px;
+  height: 256px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/reviewers-reviewer-1.png");
+  background-size: auto;
+}
+#reviewers .reviewer-2 {
+  position: absolute;
+  left: 106px;
+  top: 440px;
+  width: 430px;
+  height: 256px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/reviewers-reviewer-2.png");
+  background-size: auto;
+}
+#reviewers .reviewer-3 {
+  position: absolute;
+  left: 106px;
+  top: 714px;
+  width: 430px;
+  height: 256px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/reviewers-reviewer-3.png");
+  background-size: auto;
+}
+/* rule */
+#rule {
+  position: absolute;
+}
+#rule .title {
+  position: absolute;
+  left: 102px;
+  top: 66px;
+  width: 438px;
+  height: 80px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/rule-title.png");
+  background-size: auto;
+}
+#rule .rule-container {
+  position: absolute;
+  left: 51px;
+  top: 175px;
+  width: 536px;
+  height: 812px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#rule .rule-container .rule-content {
+  position: relative;
+  margin-left: 25px;
+  margin-top: 11px;
+  width: 473px;
+  height: 787px;
+  background-image: url("../images/rule-contents.png");
+  background-size: auto;
 }

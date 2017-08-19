@@ -45,9 +45,10 @@
             "/Index",
             "/Participate",
             "/ParticipateForm",
-            //"/Entries",
-            //"/Reviewer",
-            //"/Rule",
+            "/Entries",
+            "/VoteForm",
+            "/Reviewers",
+            "/Rule"
             //"/Winners",
             //"/TShow"
         ],
@@ -117,6 +118,15 @@
                                     return null;
                                 }
                             }
+
+                            if(hashName == '/VoteForm')
+                            {
+                                if(!FBHelper._token || VoteForm.getVotingSerial() === null)
+                                {
+                                    SceneHandler.setHash(Main.defaultHash);
+                                    return null;
+                                }
+                            }
                         }
 
                         if(hashName == '/ParticipateForm')
@@ -139,16 +149,6 @@
 
                                 SceneHandler.setHash(Main.defaultHash);
                                 return null;
-                            }
-
-
-                            if(!Main.settings.debug && !FBHelper._token)
-                            {
-                                if(!FBHelper._token)
-                                {
-                                    SceneHandler.setHash(Main.defaultHash);
-                                    return null;
-                                }
                             }
 
 
@@ -175,7 +175,7 @@
             }
         },
 
-        loginFB: function(nextHash, redirectUri)
+        loginFB: function(nextHash, redirectUri, cb)
         {
             Loading.progress("登入 facebook 中").show();
 
@@ -193,7 +193,8 @@
                 }
                 else
                 {
-                    SceneHandler.toHash(nextHash);
+                    if(nextHash) SceneHandler.toHash(nextHash);
+                    if(cb) cb.call();
                 }
             });
         }
@@ -201,8 +202,15 @@
 
     function onResize()
     {
-        //var width = $(window).width(),
-        //    height = $(window).height();
+        var width = $(window).width(),
+            height = $(window).height();
+
+        var vp = self.viewport;
+        vp.width = width;
+        vp.height = height;
+
+        if(SceneHandler.currentScene) SceneHandler.currentScene.resize();
+        Menu.resize();
     }
 
 }());
