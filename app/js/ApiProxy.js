@@ -90,6 +90,19 @@
                     "./images/index-t-shirt-demo.png",
                     "./images/index-t-shirt-demo.png"
                 ]
+        },
+
+        "get_weekly_best":
+        {
+            "error": "",
+            "examples":
+                [
+                    "./images/t-show-demo.jpg",
+                    "./images/t-show-demo.jpg",
+                    "./images/t-show-demo.jpg",
+                    "./images/t-show-demo.jpg",
+                    "./images/t-show-demo.jpg"
+                ]
         }
     };
 

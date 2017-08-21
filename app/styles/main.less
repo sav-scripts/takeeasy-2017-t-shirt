@@ -68,7 +68,7 @@ body{
         width: 100%;
         height: 100%;
 
-//        .image-bg('layouts/rule.jpg');
+//        .image-bg('layouts/t-show.jpg');
 
         background-position: center top;
 
@@ -85,6 +85,10 @@ body{
     }
 
 
+}
+
+.fade-mode{
+    opacity: .3;
 }
 
 #logo{
@@ -1123,5 +1127,46 @@ body{
             height: 787px;
             .image-bg('rule-contents.png');
         }
+    }
+}
+
+/* t-show */
+#t-show{
+    position:static;
+
+    .abs-div-2(title, 102, 66, 438, 80, 't-show-title.png');
+
+
+    .tab-week{
+        .abs-div-2(none, 51, 167, 152, 34, 't-show-tab-week.png');
+    }
+    .tab-winners{
+        .abs-div-2(none, 205, 167, 152, 34, 't-show-tab-winners.png');
+    }
+
+    .tab-week, .tab-winners{
+        background-position: top;
+        cursor: pointer;
+
+        &.active-mode{
+            background-position: bottom;
+        }
+    }
+
+    .container{
+        position: relative;
+
+        margin-left: 51px;
+        margin-top: 209px;
+        margin-bottom: 80px;
+
+        width: 538px;
+        height: auto;
+
+        img{
+            position: relative;
+            margin-bottom: 5px;
+        }
+
     }
 }

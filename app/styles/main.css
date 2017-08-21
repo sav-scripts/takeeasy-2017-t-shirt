@@ -156,6 +156,9 @@ body {
   width: 385px;
   height: 36px;
 }
+.fade-mode {
+  opacity: .3;
+}
 #logo {
   position: fixed;
   left: 22px;
@@ -1380,4 +1383,62 @@ body {
   height: 787px;
   background-image: url("../images/rule-contents.png");
   background-size: auto;
+}
+/* t-show */
+#t-show {
+  position: static;
+}
+#t-show .title {
+  position: absolute;
+  left: 102px;
+  top: 66px;
+  width: 438px;
+  height: 80px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/t-show-title.png");
+  background-size: auto;
+}
+#t-show .tab-week {
+  position: absolute;
+  left: 51px;
+  top: 167px;
+  width: 152px;
+  height: 34px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/t-show-tab-week.png");
+  background-size: auto;
+}
+#t-show .tab-winners {
+  position: absolute;
+  left: 205px;
+  top: 167px;
+  width: 152px;
+  height: 34px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/t-show-tab-winners.png");
+  background-size: auto;
+}
+#t-show .tab-week,
+#t-show .tab-winners {
+  background-position: top;
+  cursor: pointer;
+}
+#t-show .tab-week.active-mode,
+#t-show .tab-winners.active-mode {
+  background-position: bottom;
+}
+#t-show .container {
+  position: relative;
+  margin-left: 51px;
+  margin-top: 209px;
+  margin-bottom: 80px;
+  width: 538px;
+  height: auto;
+}
+#t-show .container img {
+  position: relative;
+  margin-bottom: 5px;
 }

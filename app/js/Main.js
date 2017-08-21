@@ -48,9 +48,9 @@
             "/Entries",
             "/VoteForm",
             "/Reviewers",
-            "/Rule"
+            "/Rule",
+            "/TShow"
             //"/Winners",
-            //"/TShow"
         ],
 
         defaultHash: '/Index',
@@ -101,7 +101,7 @@
 
                     cbBeforeStageIn: function(newHash)
                     {
-                        var useFixSize = newHash != '/Entries';
+                        var useFixSize = (newHash != '/Entries' && newHash != '/TShow');
                         $("#scene-container").toggleClass("fix-size-mode", useFixSize);
                     },
 

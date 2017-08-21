@@ -61,9 +61,8 @@
 
             $doms.btnTShow = $doms.menuContainer.find(".button:nth-child(13)").on(_CLICK_, function()
             {
-                alert("單元尚未開放, 敬請期待");
-                //SceneHandler.toHash("/TShow");
-                //self.close();
+                SceneHandler.toHash("/TShow");
+                self.close();
             });
         },
 
