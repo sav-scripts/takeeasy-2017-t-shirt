@@ -303,7 +303,7 @@ body{
     position: absolute;
 
     .abs-div-2(title, 102, 67, 438, 80, 'participate-title.png');
-    .abs-div-2(contents, 55, 157, 536, 791, 'participate-contents.png');
+    .abs-div-2(contents, 55, 157, 538, 791, 'participate-contents.png');
 
     .abs-div-2(btn-upload, 247, 749, 150, 45, 'participate-btn-upload.png');
     .abs-div-2(btn-send, 247, 964, 150, 45, 'participate-btn-continue.png');
@@ -590,11 +590,11 @@ body{
 
     .tab-latest, .tab-popular{
 
-        background-position: bottom;
+        background-position: top;
         cursor: pointer;
 
         &.active-mode{
-            background-position: top;
+            background-position: bottom;
         }
 
 
@@ -1004,6 +1004,23 @@ body{
 
         .image-bg("vote-form-success-base.png");
 
+        .avaiable-votes{
+            position: absolute;
+
+//            background-color: rgba(255,0,0,.3);
+
+            left: 116px;
+            top: 90px;
+            width: 19px;
+            height: 30px;
+
+            .default-font(28px, black);
+
+            font-family: arial, sans-serif;
+            font-weight: bold;
+
+            text-align: center;
+        }
 
 
         .btn-share{

@@ -113,7 +113,6 @@
                             {
                                 if(!FBHelper._token)
                                 {
-                                    //console.log("no token");
                                     SceneHandler.setHash(Main.defaultHash);
                                     return null;
                                 }
@@ -171,7 +170,16 @@
                     }
                 });
 
-                SceneHandler.toFirstHash();
+
+
+                if(Utility.urlParams.serial)
+                {
+                    getFirstEntry();
+                }
+                else
+                {
+                    SceneHandler.toFirstHash();
+                }
             }
         },
 
@@ -199,6 +207,20 @@
             });
         }
     };
+
+
+    function getFirstEntry()
+    {
+        if(history && history.replaceState)
+        {
+            var hash = SceneHandler.getHash();
+            var uri = Helper.removeURLParameter(location.href, 'serial') + "#" + hash;
+            window.history.replaceState({path:uri},'',uri);
+        }
+
+        Entries.firstEntrySerial = Utility.urlParams.serial;
+        SceneHandler.toHash('/Entries');
+    }
 
     function onResize()
     {

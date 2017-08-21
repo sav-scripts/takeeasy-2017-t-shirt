@@ -14,6 +14,8 @@
 
     var self = window.Entries =
     {
+        firstEntrySerial: null,
+
         stageIn: function (options, cb)
         {
             (!_isInit) ? loadAndBuild(execute) : execute();
@@ -68,12 +70,19 @@
             if(!_isFirstSearchExecuted)
             {
                 _isFirstSearchExecuted = true;
-                $doms.keywordInput.val('');
-                _keyword = '';
-                doSearch(0, true);
+
+                if(!checkFirstEntry())
+                {
+                    $doms.keywordInput.val('');
+                    _keyword = '';
+                    doSearch(0, true);
+                }
+                else
+                {
+                    checkFirstEntry();
+                }
             }
 
-            //checkFirstEntry();
 
 
             cb.apply();
@@ -120,11 +129,11 @@
 
             //$doms.keywordInput.val('');
 
-            if(!PatternSamples.onlySpace.test(v))
-            {
+            //if(!PatternSamples.onlySpace.test(v))
+            //{
                 _keyword = v;
                 doSearch(0, true);
-            }
+            //}
 
 
         });
@@ -167,6 +176,26 @@
 
 
         $doms.container.detach();
+    }
+
+
+    function checkFirstEntry()
+    {
+        if(Entries.firstEntrySerial)
+        {
+            var serial = Entries.firstEntrySerial;
+            Entries.firstEntrySerial = null;
+
+            _keyword = serial;
+            doSearch(0, true, null, true);
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 
     /* active scroll listening */

@@ -14,7 +14,8 @@
         "entries_vote":
         {
             "error": "",
-            "share_url": "./misc/share.jpg"
+            "share_url": "./misc/share.jpg",
+            "avaiable_votes": "7"
         },
 
         "entries_search":

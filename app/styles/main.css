@@ -469,7 +469,7 @@ body {
   position: absolute;
   left: 55px;
   top: 157px;
-  width: 536px;
+  width: 538px;
   height: 791px;
   margin-left: 0px;
   margin-top: 0px;
@@ -828,12 +828,12 @@ body {
 }
 #entries .tab-latest,
 #entries .tab-popular {
-  background-position: bottom;
+  background-position: top;
   cursor: pointer;
 }
 #entries .tab-latest.active-mode,
 #entries .tab-popular.active-mode {
-  background-position: top;
+  background-position: bottom;
 }
 #entries .entries-container {
   position: relative;
@@ -1196,6 +1196,19 @@ body {
   margin-top: -200.5px;
   background-image: url("../images/vote-form-success-base.png");
   background-size: auto;
+}
+#vote-form-success .content .avaiable-votes {
+  position: absolute;
+  left: 116px;
+  top: 90px;
+  width: 19px;
+  height: 30px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 28px;
+  color: black;
+  font-family: arial, sans-serif;
+  font-weight: bold;
+  text-align: center;
 }
 #vote-form-success .content .btn-share {
   position: absolute;

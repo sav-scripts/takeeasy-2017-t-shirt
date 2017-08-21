@@ -9,7 +9,7 @@
         _isRuleConfirmed = false,
         _imageSetting =
         {
-            raw: {w:7086, h:3543},
+            raw: {w:2400, h:1200},
             preview: {w:456, h:228},
             thumb: {w:456, h:228}
         };

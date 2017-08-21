@@ -74,6 +74,8 @@
         self.Success.init($('#vote-form-success'));
         self.ShareSuccess.init($('#vote-form-share-success'));
 
+        //self.Success.show();
+
         $doms.container.detach();
     }
 
@@ -119,8 +121,8 @@
 
     function trySend()
     {
-        //var formObj = checkForm();
-        var formObj = {};
+        var formObj = checkForm();
+        //var formObj = {};
 
         if(formObj)
         {
@@ -147,6 +149,7 @@
                         //ga('send', 'event', '作品瀏覽及投票 - 表單', "資料送出成功", _votingSerial);
                         VoteForm.Success.setShareEntrySerial(_votingSerial);
                         VoteForm.Success.setShareImageUrl(response.share_url);
+                        VoteForm.Success.setAvaiableVotes(response.avaiable_votes);
 
                         reset();
 
@@ -174,7 +177,7 @@
         if(PatternSamples.onlySpace.test(dom.value))
         {
             alert('請輸入您的名稱'); dom.focus(); return;
-        }else formObj.user_name = dom.value;
+        }else formObj.name = dom.value;
 
         dom = $doms.fields.phone[0];
         if(!PatternSamples.phone.test(dom.value))

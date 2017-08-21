@@ -2,10 +2,12 @@
 
     var $container,
         $content,
+        $avaiableVotes,
         _tl,
         _isHiding = true,
         _shareEntrySerial,
-        _shareImageUrl;
+        _shareImageUrl,
+        _avaiableVotes;
 
     var self = window.VoteForm.Success =
     {
@@ -27,13 +29,12 @@
                         method:"feed",
                         display: "iframe",
                         link: Utility.getPath() + "?serial=" + _shareEntrySerial,
-                        title: "vote success share title",
-                        description: 'vote success share text',
-                        //picture: _shareImageUrl
+                        title: "同學！快來幫我們的班服投票啊！！",
+                        description: '【你們班服不服？輕鬆小品班服好fun 募集大賞】天天幫你的班服投票，就有機會抽中幸運大獎，還能幫全班贏得榮耀',
                         picture: _shareImageUrl + "?v=" + new Date().getTime()
                     },function(response)
                     {
-                        //console.log(JSON.stringify(response));
+                        console.log(JSON.stringify(response));
 
                         if(response && response.post_id)
                         {
@@ -45,6 +46,9 @@
                     }
                 );
             });
+
+
+            $avaiableVotes = $container.find(".avaiable-votes");
 
             $content = $container.find(".content");
 
@@ -59,6 +63,12 @@
         setShareImageUrl: function(url)
         {
             _shareImageUrl = url;
+        },
+
+        setAvaiableVotes: function(v)
+        {
+            _avaiableVotes = v;
+            $avaiableVotes.text(v);
         },
 
         show: function()
