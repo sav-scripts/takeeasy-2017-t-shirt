@@ -19,12 +19,14 @@
 
             $container.find(".btn-participate").on("click", function()
             {
+                ga("send", "event", "投票表單-下一步對話框", "按鈕點擊", "我也要投稿");
                 self.hide();
                 SceneHandler.toHash('/Participate');
             });
 
             $container.find(".btn-entries").on("click", function()
             {
+                ga("send", "event", "投票表單-下一步對話框", "按鈕點擊", "看其他班服");
                 self.hide();
                 SceneHandler.toHash('/Entries');
             });

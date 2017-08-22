@@ -52,12 +52,13 @@
 
         $doms.container.find(".btn-participate").on(_CLICK_, function()
         {
-            //SceneHandler.toHash("/Participate");
+            ga("send", "event", "首頁", "按鈕點擊", "我要投稿");
             Main.loginFB('/Participate');
         });
 
         $doms.container.find(".btn-to-entries").on(_CLICK_, function()
         {
+            ga("send", "event", "首頁", "按鈕點擊", "作品瀏覽+投票");
             SceneHandler.toHash("/Entries");
         });
 

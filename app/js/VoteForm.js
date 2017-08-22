@@ -60,6 +60,7 @@
 
         $doms.btnSend = $doms.container.find(".btn-send").on(_CLICK_, function()
         {
+            ga("send", "event", "投票表單", "按鈕點擊", "確認送出");
             trySend();
         });
 
@@ -139,16 +140,17 @@
 
                 ApiProxy.callApi("entries_vote", formObj, true, function(response)
                 {
+                    console.log(JSON.stringify(response));
                     if(response.error)
                     {
-                        //ga('send', 'event', '作品瀏覽及投票 - 表單', "資料送出失敗", response.error);
+                        ga("send", "event", "投票表單", "資料送出失敗", response.error);
                         alert(response.error);
                     }
                     else
                     {
-                        //ga('send', 'event', '作品瀏覽及投票 - 表單', "資料送出成功", _votingSerial);
+                        ga("send", "event", "投票表單", "資料送出失敗", _votingSerial);
                         VoteForm.Success.setShareEntrySerial(_votingSerial);
-                        VoteForm.Success.setShareImageUrl(response.share_url);
+                        VoteForm.Success.setShareUrl(response.share_url);
                         VoteForm.Success.setAvaiableVotes(response.avaiable_votes);
 
                         reset();

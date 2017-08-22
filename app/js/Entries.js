@@ -3,9 +3,8 @@
     var $doms = {},
         _keyword,
         _isLocking,
-        _isActive = false,
+        //_isActive = false,
         _pageSize = 10,
-        _currentData,
         _sortType = "date",
         _isFirstSearchExecuted = false,
         _lastSearchSetting,
@@ -63,9 +62,7 @@
         tl.to($doms.container, .4, {autoAlpha: 1});
         tl.add(function ()
         {
-            active();
-
-
+            ScrollListener.active(readMore, $doms.bottomBleed[0], -40);
 
             if(!_isFirstSearchExecuted)
             {
@@ -91,7 +88,7 @@
 
     function hide(cb)
     {
-        disactive();
+        ScrollListener.disactive();
 
         var tl = new TimelineMax;
         tl.to($doms.container, .4, {autoAlpha: 0});
@@ -125,15 +122,10 @@
         {
             if(_isLocking) return;
 
-            var v = $doms.keywordInput.val();
+            ga("send", "event", "作品瀏覽+投票", "按鈕點擊", "搜尋名字");
 
-            //$doms.keywordInput.val('');
-
-            //if(!PatternSamples.onlySpace.test(v))
-            //{
-                _keyword = v;
-                doSearch(0, true);
-            //}
+            _keyword = $doms.keywordInput.val();
+            doSearch(0, true);
 
 
         });
@@ -142,6 +134,7 @@
         {
             if(_isLocking) return;
 
+            ga("send", "event", "作品瀏覽+投票", "按鈕點擊", "搜尋編碼");
 
             var v = parseInt($doms.keywordInput.val());
 
@@ -150,7 +143,7 @@
                 _keyword = v;
 
                 $doms.keywordInput.val('');
-                doSearch(0, true, null, true);
+                doSearch(0, true, true);
             }
             else
             {
@@ -162,12 +155,16 @@
         {
             if(_isLocking) return;
 
+            ga("send", "event", "作品瀏覽+投票", "按鈕點擊", "最新上架");
+
             changeSortType("date");
         });
 
         $doms.btnSortByRank = $doms.container.find(".tab-popular").on("click", function()
         {
             if(_isLocking) return;
+
+            ga("send", "event", "作品瀏覽+投票", "按鈕點擊", "人氣排行");
 
             changeSortType("votes");
         });
@@ -187,7 +184,7 @@
             Entries.firstEntrySerial = null;
 
             _keyword = serial;
-            doSearch(0, true, null, true);
+            doSearch(0, true, true);
 
             return true;
         }
@@ -198,54 +195,25 @@
 
     }
 
-    /* active scroll listening */
-    function active()
+    function readMore()
     {
-        _isActive = true;
-
-        $(window).on('scroll', updateScrollTop);
-    }
-
-    function disactive()
-    {
-        _isActive = false;
-
-        $(window).unbind('scroll', updateScrollTop);
-    }
-
-
-    function updateScrollTop()
-    {
-        if(_isLocking) return;
-        if(!_isActive) return;
-
-        var bleedBottom = $doms.bottomBleed[0].getBoundingClientRect().bottom - 40,
-            windowBottom = Main.viewport.height;
-
-        //console.log(windowBottom);
-
-        if(bleedBottom < windowBottom)
+        if(!_isLocking && _lastResponse)
         {
-            if(_lastResponse)
-            {
-                var numPages = parseInt(_lastResponse.num_pages),
-                    lastPageIndex = parseInt(_lastResponse.page_index),
-                    nextPageIndex = lastPageIndex + 1;
+            var numPages = parseInt(_lastResponse.num_pages),
+                lastPageIndex = parseInt(_lastResponse.page_index),
+                nextPageIndex = lastPageIndex + 1;
 
-                if(nextPageIndex < numPages)
-                {
-                    doSearch(nextPageIndex, false, null, false);
-                }
+            if(nextPageIndex < numPages)
+            {
+                doSearch(nextPageIndex, false, false);
             }
         }
-
-
     }
 
     /* search functions */
-    function doSearch(pageIndex, isNewSearch, oldPageIndex, isSearchSerial)
+    function doSearch(pageIndex, isNewSearch, isSearchSerial)
     {
-        if(!_isActive) return;
+        //if(!_isActive) return;
         if(_isLocking) return;
         _isLocking = true;
 
@@ -298,10 +266,12 @@
                         }
                         else if(dataObj.status == 'reviewing')
                         {
+                            ga("send", "event", "作品瀏覽+投票", "作品審核中畫面-顯示", serachingKeyword);
                             Entries.DialogReviewing.show();
                         }
                         else if(dataObj.status == 'unapproved')
                         {
+                            ga("send", "event", "作品瀏覽+投票", "作品未通過審核畫面-顯示", serachingKeyword);
                             Entries.DialogUnapproved.show();
                         }
                     }
@@ -359,35 +329,12 @@
 
     function loadingShow()
     {
-        //$doms.loadingHint.css("display", "block");
-        //$doms.pageIndexContainer.css("display", "none");
-        //
-        //$doms.arrowLeft.css("visibility", "hidding");
-        //$doms.arrowRight.css("visibility", "hidding");
-
         $doms.bottomBleed.toggleClass('active-mode', true);
-
-        //Loading.progress('').show();
     }
 
     function loadingHide()
     {
-        //$doms.arrowLeft.css("visibility", "visible");
-        //$doms.arrowRight.css("visibility", "visible");
-        //
-        //var array = [$doms.arrowLeft, $doms.arrowRight, $doms.pageIndexContainer];
-        //
-        //var tl = new TimelineMax;
-        //tl.set(array, {opacity:0});
-        //tl.to(array,.4, {opacity:1});
-        //
-        //$doms.loadingHint.css("display", "none");
-        //$doms.pageIndexContainer.css("display", "block");
-
         $doms.bottomBleed.toggleClass('active-mode', false);
-
-        //Loading.hide();
-
     }
 
 }());
@@ -396,7 +343,6 @@
 
     var $_sample,
         $_container,
-        _isOpen = false,
         _entryList = [];
 
     var self = window.Entries.Creator =
@@ -481,6 +427,8 @@
 
             this.$dom.find('.btn-vote').on(_CLICK_, function()
             {
+                ga("send", "event", "作品瀏覽+投票", "投他一票", data.serial);
+
                 Main.loginFB(null, null, function()
                 {
                     VoteForm.setVotingSerial(data.serial);

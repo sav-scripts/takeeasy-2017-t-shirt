@@ -18,11 +18,13 @@
 
             $container.find(".btn-yes").on(_CLICK_, function()
             {
+                ga("send", "event", "我要投稿", "按鈕點擊", "班服服了嗎-服");
                 self.hide();
             });
 
             $container.find(".btn-no").on(_CLICK_, function()
             {
+                ga("send", "event", "我要投稿", "按鈕點擊", "班服服了嗎-不服");
                 window.open("http://uniform.wingzero.tw/generators/clothes", '_blank');
                 self.hide();
             });

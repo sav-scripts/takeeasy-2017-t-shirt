@@ -49,11 +49,24 @@
             "/VoteForm",
             "/Reviewers",
             "/Rule",
-            "/TShow"
             //"/Winners",
+            "/TShow"
         ],
 
         defaultHash: '/Index',
+
+        hashGA:
+        {
+            "/Index": "首頁",
+            "/Participate": "我要投稿",
+            "/ParticipateForm": "投稿表單",
+            "/Entries": "作品瀏覽+投票",
+            "/VoteForm": "投票表單",
+            "/Reviewers": "評審陣容",
+            "/Rule": "活動辦法",
+            //"/Winners": "得獎名單",
+            "/TShow": "班服展"
+        },
 
         init: function()
         {
@@ -73,6 +86,7 @@
             window._CLICK_ = (self.settings.isiOS)? "touchend": "click";
 
             Menu.init();
+            ScrollListener.init();
 
 
             FBHelper.init(Main.settings.fb_appid,
@@ -97,6 +111,11 @@
                     cbBeforeChange: function()
                     {
                         Menu.close();
+                    },
+
+                    cbContentChange: function(hashName)
+                    {
+                        ga("send", "pageview", self.hashGA[hashName]);
                     },
 
                     cbBeforeStageIn: function(newHash)

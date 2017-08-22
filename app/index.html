@@ -6,15 +6,33 @@
     <meta name="viewport" content="width=device-width">
 
     <meta property="fb:app_id" content="1876517482676293"/>
-    <meta property="og:title" content="同學！快來幫我們的班服投票啊！！" />
     <meta property="og:type" content="activity" />
-    <!--<meta property="og:url" content="xxx" />-->
+    <meta property="og:title" content="同學！快來幫我們的班服投票啊！！" />
     <meta property="og:description" content="【你們班服不服？輕鬆小品班服好fun 募集大賞】天天幫你的班服投票，就有機會抽中幸運大獎，還能幫全班贏得榮耀" />
     <meta property="og:image" content="http://local.savorks.com/projects/zoo/takeeasy-2017-t-shirt/app/misc/share.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="600" />
 
     <link rel="stylesheet" href="styles/main.css">
+
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        var _gaId = "UA-105093749-1";
+
+        if( window.location.host == "local.savorks.com" || window.location.host == "socket.savorks.com")
+        {
+            _gaId = 'UA-47951656-18';
+        }
+
+        ga('create', _gaId, 'auto');
+        ga('send', 'pageview', '使用者入站');
+
+    </script>
 
 </head>
 <body onload="Main.init();">
@@ -61,6 +79,10 @@
 
     <div id="logo"></div>
 
+    <div id="back-to-top">
+        <div class="icon"></div>
+    </div>
+
     <div id="fb-root"></div>
 
     <script src="js/lib/modernizr-custom.js?v=1"></script>
@@ -80,6 +102,7 @@
     <script src="js/Main.js"></script>
     <script src="js/Menu.js"></script>
     <script src="js/ApiProxy.js"></script>
+    <script src="js/ScrollListener.js"></script>
     <script src="js/Index.js"></script>
     <script src="js/Participate.js"></script>
     <script src="js/Participate.DialogIsReady.js"></script>

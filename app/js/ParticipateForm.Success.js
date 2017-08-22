@@ -20,6 +20,7 @@
 
             $container.find(".btn-share").on("click", function()
             {
+                ga("send", "event", "投稿表單-分享對話框", "按鈕點擊", "叫同學來衝票");
                 FB.ui
                 (
                     {
@@ -28,13 +29,9 @@
                         link: Utility.getPath() + "?serial=" + _shareEntrySerial
                     },function(response)
                     {
-                        if(response && response.post_id)
+                        if(response)
                         {
-                            //ga('send', 'event', '練肖畫 - 投稿成功', "分享成功", response.post_id);
-
                             self.hide();
-                            //alert('分享成功');
-                            //Participate.ShareSuccess.show();
                             SceneHandler.toHash('/Entries');
                         }
                     }

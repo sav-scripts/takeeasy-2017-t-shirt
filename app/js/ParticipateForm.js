@@ -49,6 +49,7 @@
 
         $doms.btnSend = $doms.container.find(".btn-send").on(_CLICK_, function()
         {
+            ga("send", "event", "投稿表單", "按鈕點擊", "確認送出");
             trySend();
         });
 
@@ -132,10 +133,12 @@
                 {
                     if(response.error)
                     {
+                        ga("send", "event", "投稿表單", "資料送出失敗", response.error);
                         alert(response.error);
                     }
                     else
                     {
+                        ga("send", "event", "投稿表單", "資料送出成功", response.serial);
                         self.Success.setShareEntrySerial(response.serial);
                         self.Success.show();
                     }

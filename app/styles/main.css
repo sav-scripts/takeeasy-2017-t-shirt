@@ -167,6 +167,10 @@ body {
   height: 41px;
   background-image: url("../images/logo.png");
   background-size: auto;
+  transition: margin-top, 0.5s, ease-in;
+}
+#logo.hide-mode {
+  margin-top: -100px;
 }
 #scene-container {
   position: relative;
@@ -188,6 +192,35 @@ body {
     overflow: hidden;
   }
 }
+#back-to-top {
+  position: fixed;
+  top: 0;
+  width: 100px;
+  height: 50px;
+  left: 50%;
+  margin-left: -55px;
+  margin-top: -60px;
+  background-color: white;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: margin-top, 0.5s, ease-in;
+  border: 5px solid #e3e3e3;
+  cursor: pointer;
+}
+#back-to-top.active-mode {
+  margin-top: -5px;
+}
+#back-to-top .icon {
+  position: absolute;
+  left: 22px;
+  top: 5px;
+  width: 56px;
+  height: 35px;
+  margin-left: 0px;
+  margin-top: 0px;
+  background-image: url("../images/back-to-top-icon.png");
+  background-size: auto;
+}
 /* menu */
 #menu-cover {
   position: fixed;
@@ -202,10 +235,8 @@ body {
 }
 #menu {
   position: fixed;
-  left: 50%;
   top: 0;
-  width: 640px;
-  margin-left: -320px;
+  right: 0;
 }
 #menu .menu-icon {
   position: absolute;
@@ -216,6 +247,10 @@ body {
   background-image: url("../images/menu-icon.png");
   background-size: auto;
   cursor: pointer;
+  transition: margin-top, 0.5s, ease-in;
+}
+#menu.hide-mode .menu-icon {
+  margin-top: -100px;
 }
 #menu .menu-base {
   visibility: hidden;

@@ -6,7 +6,7 @@
         _tl,
         _isHiding = true,
         _shareEntrySerial,
-        _shareImageUrl,
+        _shareUrl,
         _avaiableVotes;
 
     var self = window.VoteForm.Success =
@@ -23,23 +23,23 @@
 
             $container.find(".btn-share").on("click", function()
             {
+                ga("send", "event", "投票表單-分享對話框", "按鈕點擊", "叫同學來衝票");
+
                 FB.ui
                 (
                     {
                         method:"feed",
                         display: "iframe",
-                        link: Utility.getPath() + "?serial=" + _shareEntrySerial,
-                        title: "同學！快來幫我們的班服投票啊！！",
-                        description: '【你們班服不服？輕鬆小品班服好fun 募集大賞】天天幫你的班服投票，就有機會抽中幸運大獎，還能幫全班贏得榮耀',
-                        picture: _shareImageUrl + "?v=" + new Date().getTime()
+                        //link: Utility.getPath() + "?serial=" + _shareEntrySerial,
+                        link: _shareUrl
+                        //title: "同學！快來幫我們的班服投票啊！！",
+                        //description: '【你們班服不服？輕鬆小品班服好fun 募集大賞】天天幫你的班服投票，就有機會抽中幸運大獎，還能幫全班贏得榮耀',
+                        //picture: _shareImageUrl + "?v=" + new Date().getTime()
                     },function(response)
                     {
-                        console.log(JSON.stringify(response));
-
-                        if(response && response.post_id)
+                        //console.log(JSON.stringify(response));
+                        if(response)
                         {
-                            //ga('send', 'event', '作品瀏覽及投票 - 投票成功', "分享成功", response.post_id);
-
                             self.hide();
                             VoteForm.ShareSuccess.show();
                         }
@@ -60,9 +60,9 @@
             _shareEntrySerial = serial;
         },
 
-        setShareImageUrl: function(url)
+        setShareUrl: function(url)
         {
-            _shareImageUrl = url;
+            _shareUrl = url;
         },
 
         setAvaiableVotes: function(v)

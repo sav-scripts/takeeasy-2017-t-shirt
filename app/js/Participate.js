@@ -128,6 +128,7 @@
 
         $doms.btnSend = $doms.container.find(".btn-send").on(_CLICK_, function()
         {
+            ga("send", "event", "我要投稿", "按鈕點擊", "立即投稿");
 
             if(!_isImageReady)
             {

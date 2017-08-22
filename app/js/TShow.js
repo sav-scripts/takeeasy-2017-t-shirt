@@ -69,10 +69,12 @@
 
         $doms.tabWeek = $doms.container.find(".tab-week").on(_CLICK_, function()
         {
+            ga("send", "event", "班服展", "按鈕點擊", "每週佳作");
             switchTab(true);
         });
         $doms.tabWinners = $doms.container.find(".tab-winners").on(_CLICK_, function()
         {
+            ga("send", "event", "班服展", "按鈕點擊", "獲獎班服");
             alert("得獎作品尚未選出, 盡情期待");
             //switchTab(false);
         });
@@ -118,7 +120,6 @@
             if(index >= _weekBestList.length)
             {
                 _isLocking = false;
-                console.log('done');
                 return;
             }
 
@@ -136,8 +137,6 @@
             };
 
             image.src = _weekBestList[index];
-
-            console.log(_weekBestList[index]);
 
 
         }
@@ -161,12 +160,15 @@
         tl.to($doms.container, .4, {autoAlpha: 1});
         tl.add(function ()
         {
+            ScrollListener.active();
             cb.apply();
         });
     }
 
     function hide(cb)
     {
+        ScrollListener.disactive();
+
         var tl = new TimelineMax;
         tl.to($doms.container, .4, {autoAlpha: 0});
         tl.add(function ()
