@@ -135,6 +135,8 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
+  left: 0;
+  top: 0;
   background-image: url("../images/main-background.jpg");
   background-size: auto;
   background-size: cover;
@@ -244,10 +246,26 @@ body {
   top: 6px;
   width: 60px;
   height: 60px;
-  background-image: url("../images/menu-icon.png");
-  background-size: auto;
   cursor: pointer;
   transition: margin-top, 0.5s, ease-in;
+}
+#menu .menu-icon .bar-1,
+#menu .menu-icon .bar-2,
+#menu .menu-icon .bar-3 {
+  position: absolute;
+  width: 38px;
+  height: 5px;
+  background-color: #614c3f;
+  left: 11px;
+}
+#menu .menu-icon .bar-1 {
+  top: 12px;
+}
+#menu .menu-icon .bar-2 {
+  top: 27px;
+}
+#menu .menu-icon .bar-3 {
+  top: 42px;
 }
 #menu.hide-mode .menu-icon {
   margin-top: -100px;
@@ -395,10 +413,10 @@ body {
 }
 #index .detail {
   position: absolute;
-  left: 74px;
+  left: 97px;
   top: 827px;
-  width: 492px;
-  height: 184px;
+  width: 443px;
+  height: 209px;
   margin-left: 0px;
   margin-top: 0px;
   background-image: url("../images/index-detail.png");
@@ -580,6 +598,8 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
+  left: 0;
+  top: 0;
   background-color: rgba(255, 255, 255, 0.3);
 }
 #dialog-is-ready .content {
@@ -1338,7 +1358,7 @@ body {
 }
 /* reviewers */
 #reviewers {
-  position: absolute;
+  position: static;
 }
 #reviewers .title {
   position: absolute;
@@ -1384,6 +1404,15 @@ body {
   background-image: url("../images/reviewers-reviewer-3.png");
   background-size: auto;
 }
+#reviewers .reviewer-4 {
+  position: relative;
+  margin-left: 106px;
+  margin-top: 988px;
+  width: 430px;
+  height: 256px;
+  background-image: url("../images/reviewers-reviewer-4.png");
+  background-size: auto;
+}
 /* rule */
 #rule {
   position: absolute;
@@ -1414,10 +1443,11 @@ body {
   position: relative;
   margin-left: 25px;
   margin-top: 11px;
-  width: 473px;
-  height: 787px;
+  width: 474px;
+  height: 1891px;
   background-image: url("../images/rule-contents.png");
   background-size: auto;
+  margin-bottom: 30px;
 }
 /* t-show */
 #t-show {

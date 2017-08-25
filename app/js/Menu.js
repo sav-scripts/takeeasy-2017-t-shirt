@@ -1,6 +1,7 @@
 (function(){
 
     var $doms = {},
+        _iconTL,
         _isOpen = false;
 
     var self = window.Menu =
@@ -70,6 +71,8 @@
                 SceneHandler.toHash("/TShow");
                 self.close();
             });
+
+            setupIcon();
         },
 
         open: function()
@@ -102,5 +105,37 @@
         }
 
     };
+
+    function setupIcon()
+    {
+        var $icon = $doms.container.find(".menu-icon"),
+            $bar1 = $icon.find(".bar-1"),
+            $bar2 = $icon.find(".bar-2"),
+            $bar3 = $icon.find(".bar-3"),
+            bars = [$bar1[0], $bar2[0], $bar3[0]];
+
+        //console.log($icon.length);
+
+        var duration = .35;
+
+        var tl = _iconTL = new TimelineMax({paused:true});
+
+        tl.set(bars, {transformOrigin:"50% 50%"});
+
+        tl.to($bar2,duration,{rotation:45, scaleX:1, marginTop: -6+15, marginLeft: -12}, 0);
+        tl.to($bar3,duration,{rotation:-45, scaleX:1, marginTop:-6, marginLeft: 12}, 0);
+
+        tl.to($bar1,duration,{rotation:90, marginTop: 15}, 0);
+
+        $icon.on('mouseover', function()
+        {
+            _iconTL.play();
+        });
+
+        $icon.on('mouseout', function()
+        {
+            _iconTL.reverse();
+        });
+    }
 
 }());

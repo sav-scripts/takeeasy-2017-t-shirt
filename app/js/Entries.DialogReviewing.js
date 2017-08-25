@@ -15,11 +15,13 @@
             $container.find(".btn-close").on(_CLICK_, function()
             {
                 self.hide();
+                SceneHandler.toHash("/Index");
             });
 
             $container.find(".btn-continue").on("click", function()
             {
                 self.hide();
+                SceneHandler.toHash("/Index");
             });
 
             $content = $container.find(".content");

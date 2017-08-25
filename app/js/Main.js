@@ -120,7 +120,7 @@
 
                     cbBeforeStageIn: function(newHash)
                     {
-                        var useFixSize = (newHash != '/Entries' && newHash != '/TShow');
+                        var useFixSize = (newHash != '/Entries' && newHash != '/TShow' && newHash != '/Reviewers');
                         $("#scene-container").toggleClass("fix-size-mode", useFixSize);
                     },
 

@@ -38,7 +38,8 @@ module.exports = function(grunt)
                             '*.html',
                             'js/lib/modernizr-custom.js',
                             'js/lib/SquareLoading.1.0.2.js',
-                            'js/lib/jquery.1.11.3.min.js'
+                            'js/lib/jquery.1.11.3.min.js',
+                            'misc/*.*'
                         ],
                         dest: 'dist/app'
                     }

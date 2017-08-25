@@ -58,6 +58,8 @@ body{
     position: fixed;
     width: 100%;
     height: 100%;
+    left:0;
+    top:0;
 
     .image-bg("main-background.jpg");
     background-size: cover;
@@ -201,10 +203,30 @@ body{
         top:6px;
         width: 60px;
         height: 60px;
-        .image-bg("menu-icon.png");
+//        .image-bg("menu-icon.png");
         cursor: pointer;
 
         transition: margin-top, .5s, ease-in;
+
+        .bar-1, .bar-2, .bar-3{
+            position: absolute;
+            width: 38px;
+            height: 5px;
+            background-color: #614c3f;
+            left:11px;
+        }
+
+        .bar-1{
+            top:12px;
+        }
+
+        .bar-2{
+            top:27px;
+        }
+
+        .bar-3{
+            top:42px;
+        }
     }
 
     &.hide-mode{
@@ -300,7 +322,7 @@ body{
 
     .abs-div-2(title, 34, 54, 573, 301, 'index-title.png');
 
-    .abs-div-2(detail, 74, 827, 492, 184, 'index-detail.png');
+    .abs-div-2(detail, 97, 827, 443, 209, 'index-detail.png');
 
     .options{
         .abs-div-2(none, 34, 678, 570, 153, 'index-options.png');
@@ -416,6 +438,8 @@ body{
     position: fixed;
     width: 100%;
     height: 100%;
+    left:0;
+    top:0;
 
     background-color: rgba(255,255,255,.3);
 
@@ -1144,13 +1168,24 @@ body{
 
 /* reviewers */
 #reviewers{
-    position: absolute;
+    position: static;
 
     .abs-div-2(title, 102, 66, 438, 80, 'reviewers-title.png');
 
     .abs-div-2(reviewer-1, 106, 168, 430, 256, 'reviewers-reviewer-1.png');
     .abs-div-2(reviewer-2, 106, 440, 430, 256, 'reviewers-reviewer-2.png');
     .abs-div-2(reviewer-3, 106, 714, 430, 256, 'reviewers-reviewer-3.png');
+//    .abs-div-2(reviewer-4, 106, 988, 430, 256, 'reviewers-reviewer-4.png');
+
+    .reviewer-4{
+        position: relative;
+        margin-left: 106px;
+        margin-top: 988px;
+        width: 430px;
+        height: 256px;
+        .image-bg("reviewers-reviewer-4.png");
+
+    }
 }
 
 /* rule */
@@ -1175,9 +1210,11 @@ body{
             position: relative;
             margin-left: 25px;
             margin-top: 11px;
-            width: 473px;
-            height: 787px;
+            width: 474px;
+            height: 1891px;
             .image-bg('rule-contents.png');
+
+            margin-bottom: 30px;
         }
     }
 }
